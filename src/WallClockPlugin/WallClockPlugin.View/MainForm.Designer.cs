@@ -394,6 +394,7 @@
             // 
             // ClockFormGroupBox
             // 
+            this.ClockFormGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ClockFormGroupBox.Controls.Add(this.RectnagleClockRadioButton);
             this.ClockFormGroupBox.Controls.Add(this.CircleClockRadioButton);
             this.ClockFormGroupBox.Controls.Add(this.RectangleClockPictureBox);
