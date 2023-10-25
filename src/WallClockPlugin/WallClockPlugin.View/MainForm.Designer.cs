@@ -358,11 +358,13 @@
             this.BuildGroupBox.Controls.Add(this.SolidWorksPictureBox);
             this.BuildGroupBox.Controls.Add(this.AppNameLabel);
             this.BuildGroupBox.Controls.Add(this.AppImagePictureBox);
+            this.BuildGroupBox.Font = new System.Drawing.Font("SolidWorks GDT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BuildGroupBox.Location = new System.Drawing.Point(494, 27);
             this.BuildGroupBox.Name = "BuildGroupBox";
             this.BuildGroupBox.Size = new System.Drawing.Size(198, 401);
             this.BuildGroupBox.TabIndex = 2;
             this.BuildGroupBox.TabStop = false;
+            this.BuildGroupBox.Text = "Запуск";
             // 
             // ButtonsTableLayout
             // 
