@@ -133,20 +133,41 @@
   <data name="Hello" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Hello.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CircleClock_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CircleClock_52x52.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GitHubButton_hovered_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GitHubButton_hovered_52x52.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BuildButtonHovered_svg_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BuildButtonHovered_svg_52x52.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BuildButton_hovered_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BuildButton_hovered_52x52.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BuildButton_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BuildButton_52x52.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GitHubButton_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GitHubButton_52x52.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SolidWorksButton_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SolidWorksButton_52x52.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SolidWorksTextLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SolidWorksTextLogo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Sw52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sw52x52.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SolidWorksButton_hovered_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SolidWorksButton_hovered_52x52.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="WallClockSw1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WallClockSw1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ButtonBuildHovered" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonBuildHovered.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="GitHubButton_svg_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GitHubButton_svg_52x52.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BuildButtonSVG_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BuildButtonSVG_52x52.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BuildButton_svg_52x521" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BuildButton_svg_52x52.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WallClockSw" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WallClockSw.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,16 +175,19 @@
   <data name="BuildButton_svg_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BuildButton_svg_52x52.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BuildButtonSVG_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BuildButtonSVG_52x52.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SW" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ButtonBuildHovered" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ButtonBuildHovered.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="WallClockSw1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WallClockSw1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BuildButton_svg_52x521" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BuildButton_svg_52x52.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Sw52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sw52x52.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BuildButtonHovered_svg_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BuildButtonHovered_svg_52x52.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="RectangleClock_52x52" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RectangleClock_52x52.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

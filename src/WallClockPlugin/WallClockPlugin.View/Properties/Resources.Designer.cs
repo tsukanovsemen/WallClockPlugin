@@ -63,6 +63,26 @@ namespace WallClockPlugin.View.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BuildButton_52x52 {
+            get {
+                object obj = ResourceManager.GetObject("BuildButton_52x52", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BuildButton_hovered_52x52 {
+            get {
+                object obj = ResourceManager.GetObject("BuildButton_hovered_52x52", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BuildButton_svg_52x52 {
             get {
                 object obj = ResourceManager.GetObject("BuildButton_svg_52x52", resourceCulture);
@@ -123,6 +143,16 @@ namespace WallClockPlugin.View.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CircleClock_52x52 {
+            get {
+                object obj = ResourceManager.GetObject("CircleClock_52x52", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Clock {
             get {
                 object obj = ResourceManager.GetObject("Clock", resourceCulture);
@@ -143,6 +173,26 @@ namespace WallClockPlugin.View.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GitHubButton_52x52 {
+            get {
+                object obj = ResourceManager.GetObject("GitHubButton_52x52", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GitHubButton_hovered_52x52 {
+            get {
+                object obj = ResourceManager.GetObject("GitHubButton_hovered_52x52", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GitHubButton_svg_52x52 {
             get {
                 object obj = ResourceManager.GetObject("GitHubButton_svg_52x52", resourceCulture);
@@ -156,6 +206,36 @@ namespace WallClockPlugin.View.Properties {
         internal static System.Drawing.Bitmap Hello {
             get {
                 object obj = ResourceManager.GetObject("Hello", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RectangleClock_52x52 {
+            get {
+                object obj = ResourceManager.GetObject("RectangleClock_52x52", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SolidWorksButton_52x52 {
+            get {
+                object obj = ResourceManager.GetObject("SolidWorksButton_52x52", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SolidWorksButton_hovered_52x52 {
+            get {
+                object obj = ResourceManager.GetObject("SolidWorksButton_hovered_52x52", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

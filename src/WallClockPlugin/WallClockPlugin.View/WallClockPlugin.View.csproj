@@ -131,5 +131,29 @@
   <ItemGroup>
     <None Include="Resources\BuildButtonHovered_svg_52x52.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BuildButton_52x52.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BuildButton_hovered_52x52.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GitHubButton_52x52.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GitHubButton_hovered_52x52.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SolidWorksButton_52x52.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SolidWorksButton_hovered_52x52.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CircleClock_52x52.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RectangleClock_52x52.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
