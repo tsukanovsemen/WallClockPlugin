@@ -155,5 +155,11 @@
   <ItemGroup>
     <None Include="Resources\RectangleClock_52x52.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WallClockPlugin.Model\WallClockPlugin.Model.csproj">
+      <Project>{85e3cd28-3b38-4252-b733-eb9f1ebe53ca}</Project>
+      <Name>WallClockPlugin.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

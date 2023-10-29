@@ -445,6 +445,7 @@
             this.BuildButton.Size = new System.Drawing.Size(52, 52);
             this.BuildButton.TabIndex = 0;
             this.BuildButton.TabStop = false;
+            this.BuildButton.Click += new System.EventHandler(this.BuildButton_Click);
             this.BuildButton.MouseEnter += new System.EventHandler(this.BuildButton_MouseEnter);
             this.BuildButton.MouseLeave += new System.EventHandler(this.BuildButton_MouseLeave);
             // 

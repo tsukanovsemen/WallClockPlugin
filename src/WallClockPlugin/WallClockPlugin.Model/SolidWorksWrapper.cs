@@ -64,7 +64,7 @@ namespace WallClockPlugin.Model
         /// <summary>
         /// Построение эскиза круга по радиусу
         /// </summary>
-        /// <param name="radius">Радиус круга</param>
+        /// <param name="radius">Радиус круга в мм</param>
         /// <exception cref="ArgumentException">Исключение если документ был null</exception>
         public void CreateCircleSketch(ModelDoc2 document, float radius)
         {
@@ -75,7 +75,9 @@ namespace WallClockPlugin.Model
             document.SketchManager.InsertSketch(true);
             document.ClearSelection2(true);
 
-            document.SketchManager.CreateCircleByRadius(XCenter, YCenter, ZCenter, radius);
+            var radiusInMeters = radius / 1000.0f;
+
+            document.SketchManager.CreateCircleByRadius(XCenter, YCenter, ZCenter, radiusInMeters);
             document.ClearSelection2(true);
         }
 
@@ -84,7 +86,7 @@ namespace WallClockPlugin.Model
         /// </summary>
         /// <param name="document">Активный документ</param>
         /// <param name="sketch">Активный эскиз детали</param>
-        /// <param name="extrusionDepth">Глубина выдаливания</param>
+        /// <param name="extrusionDepth">Глубина выдаливания в мм</param>
         /// <exception cref="ArgumentException">Исключение если документ был null</exception>
         public void ExtrudePart(ModelDoc2 document, Sketch sketch, float extrusionDepth)
         {
@@ -93,13 +95,36 @@ namespace WallClockPlugin.Model
 
             //Доступ к элементу feature manager к активному эскизу
             Feature feature = (Feature)sketch;
-
             var sketchName = feature.Name;
+            var extrusionDepthInMeters = extrusionDepth / 1000.0f;
 
             document.Extension.SelectByID2(sketchName, "SKETCHSEGMENT", 0, 0, 0, false, 0, null, 0);
-            document.FeatureManager.FeatureExtrusion2(true, false, true, 0, 0, extrusionDepth, 0,
+            document.FeatureManager.FeatureExtrusion2(true, false, true, 0, 0, extrusionDepthInMeters, 0,
                 false, false, false, false, 0, 0, false, false, false, false,
                 true, true, true, 0, 0, false);
+        }
+
+        /// <summary>
+        /// Вырез детали
+        /// </summary>
+        /// <param name="document">Активный документ</param>
+        /// <param name="sketch">Активный эскиз</param>
+        /// <param name="cutoutDepth">Глубина выреза</param>
+        /// <exception cref="ArgumentException">Исключение если документ был null</exception>
+        public void CutPart(ModelDoc2 document, Sketch sketch, float cutoutDepth)
+        {
+            if (document == null)
+                throw new ArgumentException("Document was null.");
+
+            //Доступ к элементу feature manager к активному эскизу
+            Feature feature = (Feature)sketch;
+            var sketchName = feature.Name;
+            var cutoutDepthInMeters = cutoutDepth / 1000.0f;
+
+            document.Extension.SelectByID2(sketchName, "SKETCHSEGMENT", 0, 0, 0, false, 0, null, 0);
+            document.FeatureManager.FeatureCut4(true, false, false, 0, 0, cutoutDepthInMeters, 0, 
+                false, false, false, false, 0, 0, 
+                false, false, false, false, false, true, true, true, true, false, 0, 0, false, false); 
         }
     }
 }

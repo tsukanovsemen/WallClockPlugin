@@ -16,6 +16,9 @@
         /// <param name="parameters">Параметры детали</param>
         public void Build(WallClockParameters parameters)
         {
+            Wrapper.RunSolidWorks();
+            Wrapper.CreateNewDocument();
+
             BuildClockFrame(parameters.Radius, parameters.SideWidth, 
                 parameters.SideHeight, parameters.FrameForm);
 
@@ -34,7 +37,17 @@
         private void BuildClockFrame(float radius, float sideWidth, 
             float sideHeight, ClockForm clockForm)
         {
+            Wrapper.CreateCircleSketch(Wrapper.ModelDocument, radius + sideWidth);
 
+            var activeSketch = Wrapper.ModelDocument.SketchManager.ActiveSketch;
+
+            Wrapper.ExtrudePart(Wrapper.ModelDocument, activeSketch, sideHeight);
+
+            Wrapper.CreateCircleSketch(Wrapper.ModelDocument, radius);
+
+            activeSketch = Wrapper.ModelDocument.SketchManager.ActiveSketch;
+
+            Wrapper.CutPart(Wrapper.ModelDocument, activeSketch, sideHeight / 2);
         }
 
         /// <summary>

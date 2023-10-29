@@ -9,3 +9,6 @@ D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\Wall
 D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\WallClockPlugin.View.csproj.CoreCompileInputs.cache
 D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\WallClockPlugin.View.exe
 D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\WallClockPlugin.View.pdb
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\bin\Debug\WallClockPlugin.Model.dll
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\bin\Debug\WallClockPlugin.Model.pdb
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\WallClockPlugin.View.csproj.CopyComplete

@@ -1,4 +1,6 @@
-﻿namespace WallClockPlugin.Model
+﻿using System;
+
+namespace WallClockPlugin.Model
 {
     /// <summary>
     /// Класс для хранения и валидации параметров
@@ -105,7 +107,7 @@
                 if(!Validator.ValidateRange(MIN_SIDE_WIDTH, MAX_SIDE_WIDTH, value))
                 {
                     throw new ArgumentException($"Input value is out of range - " +
-                        $"[{MIN_SIDE_WIDTH};{MAX_SIDE_WIDTH}]");
+                        $"[{MIN_SIDE_WIDTH};{MAX_SIDE_WIDTH}].");
                 }
 
                 _sideWidth = value;
@@ -124,7 +126,7 @@
                 if(!Validator.ValidateRange(MIN_SIDE_HEIGHT, MAX_SIDE_HEIGHT, value))
                 {
                     throw new ArgumentException($"Input value is out of range - " +
-                        $"[{MIN_SIDE_HEIGHT};{MAX_SIDE_HEIGHT}]");
+                        $"[{MIN_SIDE_HEIGHT};{MAX_SIDE_HEIGHT}].");
                 }
 
                 _sideHeight = value;
@@ -146,7 +148,7 @@
                 if(!Validator.ValidateRange(minValue, maxValue, value))
                 {
                     throw new ArgumentException($"Input value is out of range - " +
-                        $"[{minValue};{maxValue}]");
+                        $"[{minValue};{maxValue}].");
                 }
 
                 _minuteHandLength = value;
@@ -168,7 +170,7 @@
                 if(!Validator.ValidateRange(minValue, maxValue, value))
                 {
                     throw new ArgumentException($"Input value is out of range - " +
-                        $"[{minValue};{maxValue}]");
+                        $"[{minValue};{maxValue}].");
                 }
 
                 _hourHandLength = value;
@@ -188,7 +190,7 @@
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        WallClockParameters() { }
+        public WallClockParameters() { }
         #endregion
 
         #region [Private methods]

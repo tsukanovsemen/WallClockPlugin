@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using WallClockPlugin.Model;
 
 namespace WallClockPlugin.View
 {
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Builder для построения модели часов
+        /// </summary>
+        public WallClockBuilder Builder { get; private set; } = new WallClockBuilder();
+
+        public WallClockParameters Parameters { get; private set; } = new WallClockParameters();
+
         public MainForm()
         {
             InitializeComponent();
@@ -67,6 +68,15 @@ namespace WallClockPlugin.View
         {
             var url = "https://github.com/tsukanovsemen";
             Process.Start(url);
+        }
+
+        private void BuildButton_Click(object sender, EventArgs e)
+        {
+            Parameters.Radius = 100;
+            Parameters.SideWidth = 30;
+            Parameters.SideHeight = 40;
+
+            Builder.Build(Parameters);
         }
     }
 }
