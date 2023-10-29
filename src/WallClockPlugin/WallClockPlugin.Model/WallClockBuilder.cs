@@ -55,7 +55,8 @@
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public WallClockBuilder() { }
+        public WallClockBuilder() 
+        {}
 
     }
 }
