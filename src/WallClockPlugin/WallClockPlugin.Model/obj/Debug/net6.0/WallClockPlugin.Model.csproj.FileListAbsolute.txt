@@ -1,0 +1,12 @@
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.Model\bin\Debug\net6.0\WallClockPlugin.Model.deps.json
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.Model\bin\Debug\net6.0\WallClockPlugin.Model.dll
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.Model\bin\Debug\net6.0\WallClockPlugin.Model.pdb
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.Model\obj\Debug\net6.0\WallClockPlugin.Model.csproj.AssemblyReference.cache
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.Model\obj\Debug\net6.0\WallClockPlugin.Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.Model\obj\Debug\net6.0\WallClockPlugin.Model.AssemblyInfoInputs.cache
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.Model\obj\Debug\net6.0\WallClockPlugin.Model.AssemblyInfo.cs
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.Model\obj\Debug\net6.0\WallClockPlugin.Model.csproj.CoreCompileInputs.cache
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.Model\obj\Debug\net6.0\WallClockPlugin.Model.dll
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.Model\obj\Debug\net6.0\refint\WallClockPlugin.Model.dll
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.Model\obj\Debug\net6.0\WallClockPlugin.Model.pdb
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.Model\obj\Debug\net6.0\ref\WallClockPlugin.Model.dll

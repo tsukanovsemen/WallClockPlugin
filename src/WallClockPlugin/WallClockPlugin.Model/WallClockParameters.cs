@@ -65,6 +65,11 @@
         /// Состояние - отображать только часы
         /// </summary>
         private bool _onlyHours = false;
+
+        /// <summary>
+        /// Форма часов
+        /// </summary>
+        private ClockForm _frameForm = ClockForm.CircleForm;
         #endregion
 
         #region [Public]
@@ -176,6 +181,11 @@
         public bool OnlyHours { get; set; }
 
         /// <summary>
+        /// Форма часов
+        /// </summary>
+        public ClockForm FrameForm { get; set; }
+
+        /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
         WallClockParameters() { }
@@ -186,7 +196,7 @@
         /// <summary>
         /// Метод возвращает минимальное значение длины минутной стрелки
         /// </summary>
-        /// <returns> Минимальное значение длины минутной стрелки</returns>
+        /// <returns>Минимальное значение длины минутной стрелки</returns>
         private float MinMinuteHandLength()
         {
             return (_radius / 2) + 4;
@@ -195,7 +205,7 @@
         /// <summary>
         /// Метод возвращает минимальное значение длины часовой стрелки
         /// </summary>
-        /// <returns> Минимальное значение длины часовой стрелки</returns>
+        /// <returns>Минимальное значение длины часовой стрелки</returns>
         private float MinHourHandLength()
         {
             return _radius / 5;
@@ -204,7 +214,7 @@
         /// <summary>
         /// Метод возвращает максимальне значение длины минутной стрелки
         /// </summary>
-        /// <returns> Максимальное значение длины минутной стрелки</returns>
+        /// <returns>Максимальное значение длины минутной стрелки</returns>
         private float MaxMinuteHandLength()
         {
             return _radius - 2;
@@ -213,7 +223,7 @@
         /// <summary>
         /// Метод возвращает максимальное значение длины часовой стрелки
         /// </summary>
-        /// <returns> Максимальное значение длины часовой стрелки</returns>
+        /// <returns>Максимальное значение длины часовой стрелки</returns>
         private float MaxHourHandLength()
         {
             return _minuteHandLength / 2;
