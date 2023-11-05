@@ -7,7 +7,11 @@ namespace WallClockPlugin.Model
     /// </summary>
     public class WallClockParameters
     {
-        #region [Private]
+        /// <summary>
+        /// Ширина рисок часов
+        /// </summary>
+        private const float CLOCKS_MARK_WIDTH = 7.0f;
+
         /// <summary>
         /// Минимальное значение радиуса циферблата
         /// </summary>
@@ -64,17 +68,9 @@ namespace WallClockPlugin.Model
         private float _hourHandLength;
 
         /// <summary>
-        /// Состояние - отображать только часы
-        /// </summary>
-        private bool _onlyHours = false;
-
-        /// <summary>
         /// Форма часов
         /// </summary>
         private ClockForm _frameForm = ClockForm.CircleForm;
-        #endregion
-
-        #region [Public]
 
         /// <summary>
         /// Радиус циферблата
@@ -180,7 +176,7 @@ namespace WallClockPlugin.Model
         /// <summary>
         /// Состояние - отображать только часы
         /// </summary>
-        public bool OnlyHours { get; set; }
+        public bool OnlyHours { get; set; } = true;
 
         /// <summary>
         /// Форма часов
@@ -191,9 +187,42 @@ namespace WallClockPlugin.Model
         /// Конструктор по умолчанию
         /// </summary>
         public WallClockParameters() { }
-        #endregion
 
-        #region [Private methods]
+        /// <summary>
+        /// Ширина рисок часов
+        /// </summary>
+        /// <returns>Возвращает ширину рисок часов</returns>
+        public float ClocksMarkWidth()
+        {
+            return CLOCKS_MARK_WIDTH;
+        }
+
+        /// <summary>
+        /// Длина риски часов, обозначающих часы
+        /// </summary>
+        /// <returns>Возвращает длину риски часов, обозначающих часы</returns>
+        public float ClocksHoursMarkLength()
+        {
+            return Radius * 0.2f;
+        }
+
+        /// <summary>
+        /// Длина риски часов, обозначающих минуты
+        /// </summary>
+        /// <returns>Возвращает длину риски часов, обозначающих минуты</returns>
+        public float ClocksMinutesMarkLength()
+        {
+            return Radius * 0.1f;
+        }
+
+        /// <summary>
+        /// Высота риски часов
+        /// </summary>
+        /// <returns>Возвращает высоту риски часов</returns>
+        public float ClocksMarkHeight()
+        {
+            return SideHeight / 4.0f;
+        }
 
         /// <summary>
         /// Метод возвращает минимальное значение длины минутной стрелки
@@ -219,7 +248,7 @@ namespace WallClockPlugin.Model
         /// <returns>Максимальное значение длины минутной стрелки</returns>
         private float MaxMinuteHandLength()
         {
-            return _radius - 2;
+            return _radius * 0.6f;
         }
 
         /// <summary>
@@ -230,6 +259,5 @@ namespace WallClockPlugin.Model
         {
             return _minuteHandLength / 2;
         }
-        #endregion
     }
 }

@@ -11,7 +11,7 @@ namespace WallClockPlugin.Model
     /// <summary>
     /// Класс-обертка для api SolidWorks
     /// </summary>
-    public class SolidWorksWrapper
+    public class SolidWorksWrapper : ICADWrapper
     {
         /// <summary>
         /// Объект SW api
@@ -23,109 +23,126 @@ namespace WallClockPlugin.Model
         /// </summary>
         public ModelDoc2 ModelDocument { get; private set; }
 
-        /// <summary>
-        /// X координата для рисования эскиза
-        /// </summary>
-        public float XCenter { get; private set; } = 0;
-
-        /// <summary>
-        /// Y координата для рисования эскиза
-        /// </summary>
-        public float YCenter { get; private set; } = 0;
-
-        /// <summary>
-        /// Z координата для рисования эскиза
-        /// </summary>
-        public float ZCenter { get; private set; } = 0;
-
-        /// <summary>
-        /// Конструктор по умолчанию
-        /// </summary>
-        public SolidWorksWrapper()
-        {}
-
-        /// <summary>
-        /// Запуск SolidWorks
-        /// </summary>
-        public void RunSolidWorks()
-        { 
+        public void RunCAD()
+        {
             SolidWorks.Visible = true;
         }
 
-        /// <summary>
-        /// Создание нового 3d документа
-        /// </summary>
         public void CreateNewDocument()
         {
             SolidWorks.NewPart();
             ModelDocument = SolidWorks.IActiveDoc2;
         }
 
-        /// <summary>
-        /// Построение эскиза круга по радиусу
-        /// </summary>
-        /// <param name="radius">Радиус круга в мм</param>
-        /// <exception cref="ArgumentException">Исключение если документ был null</exception>
-        public void CreateCircleSketch(ModelDoc2 document, float radius)
+        public void CreateCircleSketch(float radius, float xc, float yc, float zc, string operationName)
         {
-            if(document == null)
-                throw new ArgumentException("Document was null.");
-
-            document.Extension.SelectByID2("Спереди", "PLANE", 0, 0, 0, false, 0, null, 0);
-            document.SketchManager.InsertSketch(true);
-            document.ClearSelection2(true);
+            ModelDocument.Extension.SelectByID2("Спереди", "PLANE", 0, 0, 0, false, 0, null, 0);
+            ModelDocument.SketchManager.InsertSketch(true);
+            ModelDocument.ClearSelection2(true);
 
             var radiusInMeters = radius / 1000.0f;
 
-            document.SketchManager.CreateCircleByRadius(XCenter, YCenter, ZCenter, radiusInMeters);
-            document.ClearSelection2(true);
+            ModelDocument.SketchManager.CreateCircleByRadius(xc, yc, zc, radiusInMeters);
+
+            var currentFeature = (Feature)ModelDocument.SketchManager.ActiveSketch;
+            currentFeature.Name = operationName;
+
+            ModelDocument.ClearSelection2(true);
         }
 
-        /// <summary>
-        /// Выдавливание детали
-        /// </summary>
-        /// <param name="document">Активный документ</param>
-        /// <param name="sketch">Активный эскиз детали</param>
-        /// <param name="extrusionDepth">Глубина выдаливания в мм</param>
-        /// <exception cref="ArgumentException">Исключение если документ был null</exception>
-        public void ExtrudePart(ModelDoc2 document, Sketch sketch, float extrusionDepth)
+        public void ExtrudePart(float extrusionDepth, string operationName, bool oneSide = true)
         {
-            if(document == null)
-                throw new ArgumentException("Document was null.");
-
             //Доступ к элементу feature manager к активному эскизу
-            Feature feature = (Feature)sketch;
-            var sketchName = feature.Name;
+            Feature currentFeature = ModelDocument.SketchManager.ActiveSketch as Feature;
+            var sketchName = currentFeature.Name;
+
+            // Если выдавливание в две стороны, то тогда делим пополам
+            extrusionDepth = oneSide ? extrusionDepth : extrusionDepth / 2;
+
             var extrusionDepthInMeters = extrusionDepth / 1000.0f;
 
-            document.Extension.SelectByID2(sketchName, "SKETCHSEGMENT", 0, 0, 0, false, 0, null, 0);
-            document.FeatureManager.FeatureExtrusion2(true, false, true, 0, 0, extrusionDepthInMeters, 0,
-                false, false, false, false, 0, 0, false, false, false, false,
+            ModelDocument.Extension.SelectByID2(sketchName, "SKETCHSEGMENT", 0, 0, 0, false, 0, null, 0);
+
+            var feature = ModelDocument.FeatureManager.FeatureExtrusion2(oneSide, false, false, 0, 0, extrusionDepthInMeters,
+                oneSide ? 0 : extrusionDepthInMeters, false, false, false, false, 0, 0, false, false, false, false,
                 true, true, true, 0, 0, false);
+
+            feature.Name = operationName;
+        }
+
+        public void CutPart(float cutoutDepth, string operationName, bool oneSide = true)
+        {
+            //Доступ к элементу feature manager к активному эскизу
+            Feature currentFeature = ModelDocument.SketchManager.ActiveSketch as Feature;
+            var sketchName = currentFeature.Name;
+
+            var cutoutDepthInMeters = cutoutDepth / 1000.0f;
+
+            ModelDocument.Extension.SelectByID2(sketchName, "SKETCHSEGMENT", 0, 0, 0, false, 0, null, 0);
+            var feature = ModelDocument.FeatureManager.FeatureCut4(true, false, true, 0, 0, cutoutDepthInMeters, 0,
+                false, false, false, false, 0, 0,
+                false, false, false, false, false, true, true, true, true, false, 0, 0, false, false);
+
+            feature.Name = operationName;
+        }
+
+        public void CreateRectangleSketch(float width, float height, string operationName,
+            float xc = 0, float yc = 0, float zc = 0)
+        {
+            ModelDocument.Extension.SelectByID2("Спереди", "PLANE", 0, 0, 0, false, 0, null, 0);
+            ModelDocument.SketchManager.InsertSketch(true);
+            ModelDocument.ClearSelection2(true);
+
+            width /= 2;
+            height /= 2;
+
+            var widthInMeters = width / 1000;
+            var heightInMeters = height / 1000;
+
+            yc /= 1000;
+
+            var x2 = xc + widthInMeters;
+            var y2 = yc + heightInMeters;
+
+            ModelDocument.SketchManager.CreateCenterRectangle(xc, yc, zc, x2, y2, zc);
+
+            var feature = ModelDocument.SketchManager.ActiveSketch as Feature;
+            feature.Name = operationName;
+
+            ModelDocument.ClearSelection2(true);
         }
 
         /// <summary>
-        /// Вырез детали
+        /// Создание вспомогательной линии
         /// </summary>
-        /// <param name="document">Активный документ</param>
-        /// <param name="sketch">Активный эскиз</param>
-        /// <param name="cutoutDepth">Глубина выреза</param>
-        /// <exception cref="ArgumentException">Исключение если документ был null</exception>
-        public void CutPart(ModelDoc2 document, Sketch sketch, float cutoutDepth)
+        public void CreateAxisLine(string operationName) 
         {
-            if (document == null)
-                throw new ArgumentException("Document was null.");
+            ModelDocument.Extension.SelectByID2("Сверху", "PLANE", 0, 0, 0, false, 0, null, 0);
+            ModelDocument.SketchManager.CreateCenterLine(0, 0.02, 0, 0, -0.02, 0);
 
-            //Доступ к элементу feature manager к активному эскизу
-            Feature feature = (Feature)sketch;
-            var sketchName = feature.Name;
-            var cutoutDepthInMeters = cutoutDepth / 1000.0f;
+            var currentFeature = ModelDocument.SketchManager.ActiveSketch as Feature;
+            currentFeature.Name = operationName;
 
-            document.Extension.SelectByID2(sketchName, "SKETCHSEGMENT", 0, 0, 0, false, 0, null, 0);
-            document.FeatureManager.FeatureCut4(true, false, false, 0, 0, cutoutDepthInMeters, 0, 
-                false, false, false, false, 0, 0, 
-                false, false, false, false, false, true, true, true, true, false, 0, 0, false, false); 
+            ModelDocument.SketchManager.InsertSketch(true);
+        }
+
+        public void CreateCircularArray(int count, float angle, string operationName, 
+            string repetitiveOperationName, string axisName)
+        {
+            ModelDocument.Extension.SelectByID2(repetitiveOperationName, "BODYFEATURE", 0, 0, 0, false, 4, null, 0);
+            ModelDocument.Extension.SelectByID2("Line1@" + axisName, "EXTSKETCHSEGMENT", 0, -0.02f, 0, true, 1, null, 0);
+
+            var angleInRadian = (angle * Math.PI) / 180;
+
+            var feature = ModelDocument.FeatureManager.FeatureCircularPattern4(count, angleInRadian, true,
+               "NULL", true, false, false );
+
+            //feature.Name = operationName;
+
+            ModelDocument.FeatureManager.CreateFeature(feature);
+            ModelDocument.ClearSelection2(true);
         }
     }
+
 }
     

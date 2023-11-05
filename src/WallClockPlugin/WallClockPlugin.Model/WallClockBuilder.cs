@@ -1,4 +1,7 @@
-﻿namespace WallClockPlugin.Model
+﻿using System;
+using System.Collections.Generic;
+
+namespace WallClockPlugin.Model
 {
     /// <summary>
     /// Класс для построения модели часов
@@ -8,7 +11,35 @@
         /// <summary>
         /// Обертка над api SolidWorks
         /// </summary>
-        public SolidWorksWrapper Wrapper { get; private set; } = new SolidWorksWrapper();
+        public ICADWrapper Wrapper { get; private set; } = new SolidWorksWrapper();
+
+        /// <summary>
+        /// Коллекция операций построения
+        /// </summary>
+        public Dictionary<WallClockBuildOperations, string> BuildOperations { get; private set; } 
+
+        /// <summary>
+        /// X координата центра, относительного которого строится объект
+        /// </summary>
+        public float XCenter { get; set; } = 0.0f;
+
+        /// <summary>
+        /// Y координата центра, относительного которого строится объект
+        /// </summary>
+        public float YCenter { get; set; } = 0.0f;
+
+        /// <summary>
+        /// Z координата центра, относительного которого строится объект
+        /// </summary>
+        public float ZCenter { get; set; } = 0.0f;
+
+        /// <summary>
+        /// Создание объекта и инициализация всех операций построения
+        /// </summary>
+        public WallClockBuilder()
+        {
+            BuildOperations = GetAllBuildOperations();
+        }
 
         /// <summary>
         /// Построение детали по входным параметрам
@@ -16,13 +47,15 @@
         /// <param name="parameters">Параметры детали</param>
         public void Build(WallClockParameters parameters)
         {
-            Wrapper.RunSolidWorks();
+            Wrapper.RunCAD();
             Wrapper.CreateNewDocument();
 
             BuildClockFrame(parameters.Radius, parameters.SideWidth, 
                 parameters.SideHeight, parameters.FrameForm);
 
-            BuildHoursAndMinutes(parameters.OnlyHours, parameters.Radius);
+            BuildHoursAndMinutes(false, parameters.Radius, 
+                parameters.ClocksMarkWidth(), parameters.ClocksHoursMarkLength(),
+                parameters.ClocksMinutesMarkLength(), parameters.ClocksMarkHeight());
 
             BuildHourAndMinuteHands(parameters.HourHandLength, parameters.MinuteHandLength);
         }
@@ -37,17 +70,18 @@
         private void BuildClockFrame(float radius, float sideWidth, 
             float sideHeight, ClockForm clockForm)
         {
-            Wrapper.CreateCircleSketch(Wrapper.ModelDocument, radius + sideWidth);
+            Wrapper.CreateCircleSketch(radius + sideWidth, 
+                XCenter, YCenter, ZCenter, 
+                BuildOperations[WallClockBuildOperations.CreateCircleForClock]);
 
-            var activeSketch = Wrapper.ModelDocument.SketchManager.ActiveSketch;
+            Wrapper.ExtrudePart(sideHeight, 
+                BuildOperations[WallClockBuildOperations.ExtrudeCircleForClock], false);
 
-            Wrapper.ExtrudePart(Wrapper.ModelDocument, activeSketch, sideHeight);
+            Wrapper.CreateCircleSketch( radius, XCenter, YCenter, ZCenter,
+                BuildOperations[WallClockBuildOperations.CreateCircleForClockFace]);
 
-            Wrapper.CreateCircleSketch(Wrapper.ModelDocument, radius);
-
-            activeSketch = Wrapper.ModelDocument.SketchManager.ActiveSketch;
-
-            Wrapper.CutPart(Wrapper.ModelDocument, activeSketch, sideHeight / 2);
+            Wrapper.CutPart(sideHeight / 2, 
+                BuildOperations[WallClockBuildOperations.CutCircleForClockFace]);
         }
 
         /// <summary>
@@ -55,9 +89,40 @@
         /// </summary>
         /// <param name="onlyHours">Построение только часов</param>
         /// <param name="radius">Радиус циферблата</param>
-        private void BuildHoursAndMinutes (bool onlyHours, float radius)
+        private void BuildHoursAndMinutes(bool onlyHours, float radius, float clocksMarkWidth,
+            float clocksHoursMarkLength, float clocksMinutesMarkLength, float clocksMarkHeight)
         {
+            var yMarkCenter = radius * 0.7f;
+            Wrapper.CreateRectangleSketch(clocksMarkWidth, clocksHoursMarkLength,
+                BuildOperations[WallClockBuildOperations.CreateRectangleForHoursScale],
+                0, yMarkCenter, 0);
 
+            Wrapper.ExtrudePart(clocksMarkHeight,
+                BuildOperations[WallClockBuildOperations.ExtrudeRectangleScaleHours]);
+
+            Wrapper.CreateAxisLine(BuildOperations[WallClockBuildOperations.CreateAxisLine]);
+
+            Wrapper.CreateCircularArray(12, 30,
+                BuildOperations[WallClockBuildOperations.CreateCircleArrayHours],
+                BuildOperations[WallClockBuildOperations.ExtrudeRectangleScaleHours],
+                BuildOperations[WallClockBuildOperations.CreateAxisLine]);
+
+            if (!onlyHours)
+            {
+                yMarkCenter = radius * 0.9f;
+
+                Wrapper.CreateRectangleSketch(clocksMarkWidth, clocksMinutesMarkLength,
+                    BuildOperations[WallClockBuildOperations.CreateRectangleForMinutesScale],
+                    0, yMarkCenter, 0);
+
+                Wrapper.ExtrudePart(clocksMarkHeight,
+                BuildOperations[WallClockBuildOperations.ExtrudeRectangleScaleMinutes]);
+
+                Wrapper.CreateCircularArray(60, 6,
+                BuildOperations[WallClockBuildOperations.CreateCircleArrayMinutes],
+                BuildOperations[WallClockBuildOperations.ExtrudeRectangleScaleMinutes],
+                BuildOperations[WallClockBuildOperations.CreateAxisLine]);
+            }
         }
 
         private void BuildHourAndMinuteHands(float hourHandLength, float minuteHandeLength)
@@ -66,10 +131,47 @@
         }
 
         /// <summary>
-        /// Конструктор по умолчанию
+        /// Инициализирует и возвращает все необходимые операции построения
         /// </summary>
-        public WallClockBuilder() 
-        {}
+        /// <returns>Коллекцию операций построения</returns>
+        private Dictionary<WallClockBuildOperations, string> GetAllBuildOperations()
+        {
+            var operations = new Dictionary<WallClockBuildOperations, string>();
 
+            operations.Add(WallClockBuildOperations.CreateCircleForClock, 
+                "Создание окружности для чаосв");
+
+            operations.Add(WallClockBuildOperations.CreateCircleForClockFace, 
+                "Создание окржности для циферблата");
+
+            operations.Add(WallClockBuildOperations.ExtrudeCircleForClock, 
+                "Выдавливание окружности для часов");
+
+            operations.Add(WallClockBuildOperations.CutCircleForClockFace,
+                "Вырез окружности для циферблата");
+
+            operations.Add(WallClockBuildOperations.CreateAxisLine,
+                "Создание осевой лини");
+
+            operations.Add(WallClockBuildOperations.CreateRectangleForHoursScale,
+                "Создание прямоугольника для шкалы часов");
+
+            operations.Add(WallClockBuildOperations.CreateRectangleForMinutesScale,
+                "Создание прямоугольника для шкалы минут");
+
+            operations.Add(WallClockBuildOperations.ExtrudeRectangleScaleMinutes,
+                "Выдавливание прямоугольника шкалы минут");
+
+            operations.Add(WallClockBuildOperations.ExtrudeRectangleScaleHours,
+                "Выдавливание прямоугольника шкалы часов");
+
+            operations.Add(WallClockBuildOperations.CreateCircleArrayHours,
+                "Создание массива шкалы часов");
+
+            operations.Add(WallClockBuildOperations.CreateCircleArrayMinutes,
+                "Создание массива шкалы минут");
+
+            return operations;
+        }
     }
 }
