@@ -72,9 +72,11 @@ namespace WallClockPlugin.View
 
         private void BuildButton_Click(object sender, EventArgs e)
         {
-            Parameters.Radius = 100;
-            Parameters.SideWidth = 30;
+            Parameters.Radius = 200;
+            Parameters.SideWidth = 60;
             Parameters.SideHeight = 40;
+            Parameters.MinuteHandLength = 119;
+            Parameters.HourHandLength = 59;
 
             Builder.Build(Parameters);
         }

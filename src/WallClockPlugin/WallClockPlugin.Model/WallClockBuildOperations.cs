@@ -64,7 +64,16 @@ namespace WallClockPlugin.Model
         /// <summary>
         /// Создание массива шкалы минут
         /// </summary>
-        CreateCircleArrayMinutes
+        CreateCircleArrayMinutes,
 
+        /// <summary>
+        /// Создание центральной окружности для стрелок часов
+        /// </summary>
+        CreateCentralCircleForHands,
+
+        /// <summary>
+        /// Выдавливание центральной окружности для стрелок часов
+        /// </summary>
+        ExtrudeCentralCircleForHands
     }
 }

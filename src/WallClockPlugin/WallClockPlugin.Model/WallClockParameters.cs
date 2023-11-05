@@ -10,7 +10,7 @@ namespace WallClockPlugin.Model
         /// <summary>
         /// Ширина рисок часов
         /// </summary>
-        private const float CLOCKS_MARK_WIDTH = 7.0f;
+        private const float CLOCKS_MARK_WIDTH = 15.0f;
 
         /// <summary>
         /// Минимальное значение радиуса циферблата
