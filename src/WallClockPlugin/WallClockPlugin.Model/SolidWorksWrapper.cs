@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 
@@ -29,6 +25,7 @@ namespace WallClockPlugin.Model
         public void RunCAD()
         {
             SolidWorks.Visible = true;
+            SolidWorks.FrameState = (int)swWindowState_e.swWindowMaximized;
         }
 
         /// <summary>
@@ -200,7 +197,7 @@ namespace WallClockPlugin.Model
         /// <param name="angle">Угол наклона ромба в градусах</param>
         public void CreateRhombusSketch(float verticalDiagonalLength,
             float horizontalDiagonalLength,
-            float xc = 0, float yc = 0, 
+            float xc = 0, float yc = 0,
             float zc = 0, float angle = 0)
         {
             ModelDocument.Extension.SelectByID2("Спереди", "PLANE", 0, 0, 0, false, 0, null, 0);
@@ -217,7 +214,7 @@ namespace WallClockPlugin.Model
 
             var a = Math.Sqrt(Math.Pow((verticalDiagonalLength / 2), 2) + Math.Pow((horizontalDiagonalLength / 2), 2));
 
-            var innerAngleInRadian = Math.Asin((horizontalDiagonalLength / 2) /  a);
+            var innerAngleInRadian = Math.Asin((horizontalDiagonalLength / 2) / a);
 
             var generalAngleInRadian = innerAngleInRadian + angleInRadian;
 
@@ -247,4 +244,3 @@ namespace WallClockPlugin.Model
         }
     }
 }
-    

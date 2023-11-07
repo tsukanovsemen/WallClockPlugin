@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WallClockPlugin.Model
+﻿namespace WallClockPlugin.Model
 {
     /// <summary>
     /// Класс для валидации данных
     /// </summary>
     public class Validator
     {
-        #region [Public]
         /// <summary>
         /// Валидация входа значения в определенный диапазон [left;right]
         /// </summary>
@@ -34,6 +27,5 @@ namespace WallClockPlugin.Model
         {
             return value >= 0;
         }
-        #endregion
     }
 }

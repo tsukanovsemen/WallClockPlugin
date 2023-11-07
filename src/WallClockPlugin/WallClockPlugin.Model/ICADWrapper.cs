@@ -61,7 +61,7 @@
         /// <param name="operationName">Название операции</param>
         /// <param name="repetitiveOperationName">Название повторяющейся операции</param>
         /// <param name="axisName">Название оси</param>
-        void CreateCircularArray(int count, float angle, string operationName, 
+        void CreateCircularArray(int count, float angle, string operationName,
             string repetitiveOperationName, string axisName);
 
         /// <summary>
@@ -79,9 +79,9 @@
         /// <param name="yc">Координата y центра</param>
         /// <param name="zc">Координата z центра</param>
         /// <param name="angle">Угол наклона ромба в градусах</param>
-        void CreateRhombusSketch(float verticalDiagonalLength, 
-            float horizontalDiagonalLength, 
-            float xc = 0, float yc = 0, 
+        void CreateRhombusSketch(float verticalDiagonalLength,
+            float horizontalDiagonalLength,
+            float xc = 0, float yc = 0,
             float zc = 0, float angle = 0);
 
         /// <summary>

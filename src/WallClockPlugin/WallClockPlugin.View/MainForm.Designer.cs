@@ -55,11 +55,11 @@
             this.LengthHourHandLabel = new System.Windows.Forms.Label();
             this.LengthMinuteHandLabel = new System.Windows.Forms.Label();
             this.RadiusLabel = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SideHeightTextBox = new System.Windows.Forms.TextBox();
+            this.SideWidthTextBox = new System.Windows.Forms.TextBox();
+            this.HourHandLengthTextBox = new System.Windows.Forms.TextBox();
+            this.MinuteHandLengthTextBox = new System.Windows.Forms.TextBox();
+            this.RadiusTextBox = new System.Windows.Forms.TextBox();
             this.BuildGroupBox = new System.Windows.Forms.GroupBox();
             this.ButtonsTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.BuildButton = new System.Windows.Forms.PictureBox();
@@ -114,11 +114,11 @@
             this.ParametresGroupBox.Controls.Add(this.LengthHourHandLabel);
             this.ParametresGroupBox.Controls.Add(this.LengthMinuteHandLabel);
             this.ParametresGroupBox.Controls.Add(this.RadiusLabel);
-            this.ParametresGroupBox.Controls.Add(this.textBox5);
-            this.ParametresGroupBox.Controls.Add(this.textBox4);
-            this.ParametresGroupBox.Controls.Add(this.textBox3);
-            this.ParametresGroupBox.Controls.Add(this.textBox2);
-            this.ParametresGroupBox.Controls.Add(this.textBox1);
+            this.ParametresGroupBox.Controls.Add(this.SideHeightTextBox);
+            this.ParametresGroupBox.Controls.Add(this.SideWidthTextBox);
+            this.ParametresGroupBox.Controls.Add(this.HourHandLengthTextBox);
+            this.ParametresGroupBox.Controls.Add(this.MinuteHandLengthTextBox);
+            this.ParametresGroupBox.Controls.Add(this.RadiusTextBox);
             this.ParametresGroupBox.Font = new System.Drawing.Font("SolidWorks GDT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ParametresGroupBox.Location = new System.Drawing.Point(12, 27);
             this.ParametresGroupBox.Name = "ParametresGroupBox";
@@ -307,6 +307,7 @@
             this.ClockStateOnlyHoursCheckBox.TabIndex = 10;
             this.ClockStateOnlyHoursCheckBox.Text = "Показывать только часы";
             this.ClockStateOnlyHoursCheckBox.UseVisualStyleBackColor = true;
+            this.ClockStateOnlyHoursCheckBox.CheckedChanged += new System.EventHandler(this.ClockStateOnlyHoursCheckBox_CheckedChanged);
             // 
             // SideHeightLabel
             // 
@@ -353,55 +354,60 @@
             this.RadiusLabel.TabIndex = 5;
             this.RadiusLabel.Text = "Радиус";
             // 
-            // textBox5
+            // SideHeightTextBox
             // 
-            this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.SideHeightTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(158, 175);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(120, 23);
-            this.textBox5.TabIndex = 4;
+            this.SideHeightTextBox.Location = new System.Drawing.Point(158, 175);
+            this.SideHeightTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.SideHeightTextBox.Name = "SideHeightTextBox";
+            this.SideHeightTextBox.Size = new System.Drawing.Size(120, 23);
+            this.SideHeightTextBox.TabIndex = 4;
+            this.SideHeightTextBox.TextChanged += new System.EventHandler(this.SideHeightTextBox_TextChanged);
             // 
-            // textBox4
+            // SideWidthTextBox
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.SideWidthTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(158, 140);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(120, 23);
-            this.textBox4.TabIndex = 3;
+            this.SideWidthTextBox.Location = new System.Drawing.Point(158, 140);
+            this.SideWidthTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.SideWidthTextBox.Name = "SideWidthTextBox";
+            this.SideWidthTextBox.Size = new System.Drawing.Size(120, 23);
+            this.SideWidthTextBox.TabIndex = 3;
+            this.SideWidthTextBox.TextChanged += new System.EventHandler(this.SideWidthTextBox_TextChanged);
             // 
-            // textBox3
+            // HourHandLengthTextBox
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.HourHandLengthTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(158, 104);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(120, 23);
-            this.textBox3.TabIndex = 2;
+            this.HourHandLengthTextBox.Location = new System.Drawing.Point(158, 104);
+            this.HourHandLengthTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.HourHandLengthTextBox.Name = "HourHandLengthTextBox";
+            this.HourHandLengthTextBox.Size = new System.Drawing.Size(120, 23);
+            this.HourHandLengthTextBox.TabIndex = 2;
+            this.HourHandLengthTextBox.TextChanged += new System.EventHandler(this.HourHandLengthTextBox_TextChanged);
             // 
-            // textBox2
+            // MinuteHandLengthTextBox
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.MinuteHandLengthTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(158, 68);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(120, 23);
-            this.textBox2.TabIndex = 1;
+            this.MinuteHandLengthTextBox.Location = new System.Drawing.Point(158, 68);
+            this.MinuteHandLengthTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.MinuteHandLengthTextBox.Name = "MinuteHandLengthTextBox";
+            this.MinuteHandLengthTextBox.Size = new System.Drawing.Size(120, 23);
+            this.MinuteHandLengthTextBox.TabIndex = 1;
+            this.MinuteHandLengthTextBox.TextChanged += new System.EventHandler(this.MinuteHandLengthTextBox_TextChanged);
             // 
-            // textBox1
+            // RadiusTextBox
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.RadiusTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(158, 32);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 23);
-            this.textBox1.TabIndex = 0;
+            this.RadiusTextBox.Location = new System.Drawing.Point(158, 32);
+            this.RadiusTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.RadiusTextBox.Name = "RadiusTextBox";
+            this.RadiusTextBox.Size = new System.Drawing.Size(120, 23);
+            this.RadiusTextBox.TabIndex = 0;
+            this.RadiusTextBox.TextChanged += new System.EventHandler(this.RadiusTextBox_TextChanged);
             // 
             // BuildGroupBox
             // 
@@ -548,11 +554,11 @@
         private System.Windows.Forms.Label AppNameLabel;
         private System.Windows.Forms.Label LengthMinuteHandLabel;
         private System.Windows.Forms.Label RadiusLabel;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox SideHeightTextBox;
+        private System.Windows.Forms.TextBox SideWidthTextBox;
+        private System.Windows.Forms.TextBox HourHandLengthTextBox;
+        private System.Windows.Forms.TextBox MinuteHandLengthTextBox;
+        private System.Windows.Forms.TextBox RadiusTextBox;
         private System.Windows.Forms.Label SideHeightLabel;
         private System.Windows.Forms.Label SideWidthLabel;
         private System.Windows.Forms.Label LengthHourHandLabel;

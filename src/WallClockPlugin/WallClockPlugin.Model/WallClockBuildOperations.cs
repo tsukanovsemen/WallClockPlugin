@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WallClockPlugin.Model
+﻿namespace WallClockPlugin.Model
 {
     /// <summary>
     /// Операции для создания настенных часов
@@ -34,7 +28,7 @@ namespace WallClockPlugin.Model
         /// <summary>
         /// Создание осевой лини
         /// </summary>
-        CreateAxisLine, 
+        CreateAxisLine,
 
         /// <summary>
         /// Создание прямоугольника для шкалы часов

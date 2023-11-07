@@ -45,17 +45,17 @@ namespace WallClockPlugin.Model
         /// <summary>
         /// Радиус циферблата
         /// </summary>
-        private float _radius;
+        private float _radius = MIN_RADIUS;
 
         /// <summary>
         /// Ширина бортика
         /// </summary>
-        private float _sideWidth;
+        private float _sideWidth = MIN_SIDE_WIDTH;
 
         /// <summary>
         /// Высота борткиа 
         /// </summary>
-        private float _sideHeight;
+        private float _sideHeight = MIN_SIDE_HEIGHT;
 
         /// <summary>
         /// Длина минутной стрелки
@@ -75,11 +75,11 @@ namespace WallClockPlugin.Model
         /// <summary>
         /// Радиус циферблата
         /// </summary>
-        public float Radius 
+        public float Radius
         {
             get { return _radius; }
 
-            set 
+            set
             {
                 if (!Validator.ValidateRange(MIN_RADIUS, MAX_RADIUS, value))
                 {
@@ -98,9 +98,9 @@ namespace WallClockPlugin.Model
         {
             get { return _sideWidth; }
 
-            set 
+            set
             {
-                if(!Validator.ValidateRange(MIN_SIDE_WIDTH, MAX_SIDE_WIDTH, value))
+                if (!Validator.ValidateRange(MIN_SIDE_WIDTH, MAX_SIDE_WIDTH, value))
                 {
                     throw new ArgumentException($"Input value is out of range - " +
                         $"[{MIN_SIDE_WIDTH};{MAX_SIDE_WIDTH}].");
@@ -117,9 +117,9 @@ namespace WallClockPlugin.Model
         {
             get { return _sideHeight; }
 
-            set 
+            set
             {
-                if(!Validator.ValidateRange(MIN_SIDE_HEIGHT, MAX_SIDE_HEIGHT, value))
+                if (!Validator.ValidateRange(MIN_SIDE_HEIGHT, MAX_SIDE_HEIGHT, value))
                 {
                     throw new ArgumentException($"Input value is out of range - " +
                         $"[{MIN_SIDE_HEIGHT};{MAX_SIDE_HEIGHT}].");
@@ -136,12 +136,12 @@ namespace WallClockPlugin.Model
         {
             get { return _minuteHandLength; }
 
-            set 
+            set
             {
                 var minValue = MinMinuteHandLength();
                 var maxValue = MaxMinuteHandLength();
 
-                if(!Validator.ValidateRange(minValue, maxValue, value))
+                if (!Validator.ValidateRange(minValue, maxValue, value))
                 {
                     throw new ArgumentException($"Input value is out of range - " +
                         $"[{minValue};{maxValue}].");
@@ -158,12 +158,12 @@ namespace WallClockPlugin.Model
         {
             get { return _hourHandLength; }
 
-            set 
+            set
             {
                 var minValue = MinHourHandLength();
                 var maxValue = MaxHourHandLength();
 
-                if(!Validator.ValidateRange(minValue, maxValue, value))
+                if (!Validator.ValidateRange(minValue, maxValue, value))
                 {
                     throw new ArgumentException($"Input value is out of range - " +
                         $"[{minValue};{maxValue}].");
@@ -176,7 +176,7 @@ namespace WallClockPlugin.Model
         /// <summary>
         /// Состояние - отображать только часы
         /// </summary>
-        public bool OnlyHours { get; set; } = true;
+        public bool OnlyHours { get; set; } = false;
 
         /// <summary>
         /// Форма часов
@@ -184,9 +184,31 @@ namespace WallClockPlugin.Model
         public ClockForm FrameForm { get; set; }
 
         /// <summary>
-        /// Конструктор по умолчанию
+        /// Возвращает минимальный радиус циферблата
         /// </summary>
-        public WallClockParameters() { }
+        /// <returns></returns>
+        public int MinRadius()
+        {
+            return MIN_RADIUS;
+        }
+
+        /// <summary>
+        /// Возвращает минимальную ширину бортика
+        /// </summary>
+        /// <returns></returns>
+        public int MinSideWidth()
+        {
+            return MIN_SIDE_WIDTH;
+        }
+
+        /// <summary>
+        /// Возвращает минимальную высотку бортика
+        /// </summary>
+        /// <returns></returns>
+        public int MinSideHeight()
+        {
+            return MIN_SIDE_HEIGHT;
+        }
 
         /// <summary>
         /// Ширина рисок часов
@@ -221,14 +243,14 @@ namespace WallClockPlugin.Model
         /// <returns>Возвращает высоту риски часов</returns>
         public float ClocksMarkHeight()
         {
-            return SideHeight / 4.0f;
+            return SideHeight / 6.0f;
         }
 
         /// <summary>
         /// Метод возвращает минимальное значение длины минутной стрелки
         /// </summary>
         /// <returns>Минимальное значение длины минутной стрелки</returns>
-        private float MinMinuteHandLength()
+        public float MinMinuteHandLength()
         {
             return (_radius / 2) + 4;
         }
@@ -237,7 +259,7 @@ namespace WallClockPlugin.Model
         /// Метод возвращает минимальное значение длины часовой стрелки
         /// </summary>
         /// <returns>Минимальное значение длины часовой стрелки</returns>
-        private float MinHourHandLength()
+        public float MinHourHandLength()
         {
             return _radius / 5;
         }
@@ -246,7 +268,7 @@ namespace WallClockPlugin.Model
         /// Метод возвращает максимальне значение длины минутной стрелки
         /// </summary>
         /// <returns>Максимальное значение длины минутной стрелки</returns>
-        private float MaxMinuteHandLength()
+        public float MaxMinuteHandLength()
         {
             return _radius * 0.6f;
         }
@@ -255,9 +277,9 @@ namespace WallClockPlugin.Model
         /// Метод возвращает максимальное значение длины часовой стрелки
         /// </summary>
         /// <returns>Максимальное значение длины часовой стрелки</returns>
-        private float MaxHourHandLength()
+        public float MaxHourHandLength()
         {
-            return _minuteHandLength / 2;
+            return _radius * 0.3f;
         }
     }
 }
