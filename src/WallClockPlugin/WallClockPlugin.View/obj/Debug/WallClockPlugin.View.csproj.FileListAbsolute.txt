@@ -1,0 +1,14 @@
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\bin\Debug\WallClockPlugin.View.exe.config
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\bin\Debug\WallClockPlugin.View.exe
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\bin\Debug\WallClockPlugin.View.pdb
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\WallClockPlugin.View.csproj.AssemblyReference.cache
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\WallClockPlugin.View.csproj.SuggestedBindingRedirects.cache
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\WallClockPlugin.View.MainForm.resources
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\WallClockPlugin.View.Properties.Resources.resources
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\WallClockPlugin.View.csproj.GenerateResource.cache
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\WallClockPlugin.View.csproj.CoreCompileInputs.cache
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\WallClockPlugin.View.exe
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\WallClockPlugin.View.pdb
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\bin\Debug\WallClockPlugin.Model.dll
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\bin\Debug\WallClockPlugin.Model.pdb
+D:\repos\WallClockPlugin\src\WallClockPlugin\WallClockPlugin.View\obj\Debug\WallClockPlugin.View.csproj.CopyComplete
