@@ -19,11 +19,16 @@
         /// Создание эскиза круга
         /// </summary>
         /// <param name="radius">Радиус круга в мм</param>
-        /// <param name="xc">Координата x центра</param>
-        /// <param name="yc">Координата y центра</param>
-        /// <param name="zc">Координата z центра</param>
+        /// <param name="xCenter">Координата x центра</param>
+        /// <param name="yCenter">Координата y центра</param>
+        /// <param name="zCenter">Координата z центра</param>
         /// <param name="operationName">Название операции</param>
-        void CreateCircleSketch(float radius, float xc, float yc, float zc, string operationName);
+        void CreateCircleSketch(
+            float radius,
+            float xCenter,
+            float yCenter,
+            float zCenter,
+            string operationName);
 
         /// <summary>
         /// Выдавливание детали
@@ -47,11 +52,16 @@
         /// <param name="width">Ширина прямоугольника</param>
         /// <param name="height">Высота прямоугольника</param>
         /// <param name="operationName">Название операции</param>
-        /// <param name="xc">Координата x центра</param>
-        /// <param name="yc">Координата y центра</param>
-        /// <param name="zc">Координата z центра</param>
-        void CreateRectangleSketch(float width,
-            float height, string operationName, float xc = 0, float yc = 0, float zc = 0);
+        /// <param name="xCenter">Координата x центра</param>
+        /// <param name="yCenter">Координата y центра</param>
+        /// <param name="zCenter">Координата z центра</param>
+        void CreateRectangleSketch(
+            float width,
+            float height,
+            string operationName,
+            float xCenter = 0,
+            float yCenter = 0,
+            float zCenter = 0);
 
         /// <summary>
         /// Создание кругового массива из операций
@@ -61,8 +71,12 @@
         /// <param name="operationName">Название операции</param>
         /// <param name="repetitiveOperationName">Название повторяющейся операции</param>
         /// <param name="axisName">Название оси</param>
-        void CreateCircularArray(int count, float angle, string operationName,
-            string repetitiveOperationName, string axisName);
+        void CreateCircularArray(
+            int count,
+            float angle,
+            string operationName,
+            string repetitiveOperationName,
+            string axisName);
 
         /// <summary>
         /// Создание оси
@@ -75,14 +89,17 @@
         /// </summary>
         /// <param name="verticalDiagonalLength">Длина в мм</param>
         /// <param name="horizontalDiagonalLength"></param>
-        /// <param name="xc">Координата x центра</param>
-        /// <param name="yc">Координата y центра</param>
-        /// <param name="zc">Координата z центра</param>
+        /// <param name="xCenter">Координата x центра</param>
+        /// <param name="yCenter">Координата y центра</param>
+        /// <param name="zCenter">Координата z центра</param>
         /// <param name="angle">Угол наклона ромба в градусах</param>
-        void CreateRhombusSketch(float verticalDiagonalLength,
+        void CreateRhombusSketch(
+            float verticalDiagonalLength,
             float horizontalDiagonalLength,
-            float xc = 0, float yc = 0,
-            float zc = 0, float angle = 0);
+            float xCenter = 0,
+            float yCenter = 0,
+            float zCenter = 0,
+            float angle = 0);
 
         /// <summary>
         /// Показать деталь в Триметрии

@@ -153,6 +153,7 @@ namespace WallClockPlugin.View
             }
 
             RadiusTextBox.BackColor = ColorsWallClockPlugin.COLOR_CORRECTLY;
+
             ArgumentErrors[RadiusTextBox] = string.Empty;
 
             LengthMinuteHandValueLabel.Text = Parameters.MinMinuteHandLength()

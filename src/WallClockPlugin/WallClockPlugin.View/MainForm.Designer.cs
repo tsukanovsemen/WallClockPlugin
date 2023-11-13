@@ -32,11 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MainFormMenuStrip = new System.Windows.Forms.MenuStrip();
             this.ParametresGroupBox = new System.Windows.Forms.GroupBox();
-            this.ClockFormGroupBox = new System.Windows.Forms.GroupBox();
-            this.RectnagleClockRadioButton = new System.Windows.Forms.RadioButton();
-            this.CircleClockRadioButton = new System.Windows.Forms.RadioButton();
-            this.RectangleClockPictureBox = new System.Windows.Forms.PictureBox();
-            this.CircleClockPictrueBox = new System.Windows.Forms.PictureBox();
             this.LengthHourHandValueLabel = new System.Windows.Forms.Label();
             this.LengthMinuteHandValueLabel = new System.Windows.Forms.Label();
             this.SideHeightValueLabel = new System.Windows.Forms.Label();
@@ -70,9 +65,6 @@
             this.AppImagePictureBox = new System.Windows.Forms.PictureBox();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.ParametresGroupBox.SuspendLayout();
-            this.ClockFormGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RectangleClockPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CircleClockPictrueBox)).BeginInit();
             this.BuildGroupBox.SuspendLayout();
             this.ButtonsTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BuildButton)).BeginInit();
@@ -95,7 +87,6 @@
             this.ParametresGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ParametresGroupBox.Controls.Add(this.ClockFormGroupBox);
             this.ParametresGroupBox.Controls.Add(this.LengthHourHandValueLabel);
             this.ParametresGroupBox.Controls.Add(this.LengthMinuteHandValueLabel);
             this.ParametresGroupBox.Controls.Add(this.SideHeightValueLabel);
@@ -126,59 +117,6 @@
             this.ParametresGroupBox.TabIndex = 1;
             this.ParametresGroupBox.TabStop = false;
             this.ParametresGroupBox.Text = "Параметры и элементы управления";
-            // 
-            // ClockFormGroupBox
-            // 
-            this.ClockFormGroupBox.Controls.Add(this.RectnagleClockRadioButton);
-            this.ClockFormGroupBox.Controls.Add(this.CircleClockRadioButton);
-            this.ClockFormGroupBox.Controls.Add(this.RectangleClockPictureBox);
-            this.ClockFormGroupBox.Controls.Add(this.CircleClockPictrueBox);
-            this.ClockFormGroupBox.Location = new System.Drawing.Point(9, 266);
-            this.ClockFormGroupBox.Name = "ClockFormGroupBox";
-            this.ClockFormGroupBox.Size = new System.Drawing.Size(194, 124);
-            this.ClockFormGroupBox.TabIndex = 24;
-            this.ClockFormGroupBox.TabStop = false;
-            this.ClockFormGroupBox.Text = "Форма часов";
-            // 
-            // RectnagleClockRadioButton
-            // 
-            this.RectnagleClockRadioButton.AutoSize = true;
-            this.RectnagleClockRadioButton.Location = new System.Drawing.Point(140, 31);
-            this.RectnagleClockRadioButton.Name = "RectnagleClockRadioButton";
-            this.RectnagleClockRadioButton.Size = new System.Drawing.Size(14, 13);
-            this.RectnagleClockRadioButton.TabIndex = 27;
-            this.RectnagleClockRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // CircleClockRadioButton
-            // 
-            this.CircleClockRadioButton.AutoSize = true;
-            this.CircleClockRadioButton.Checked = true;
-            this.CircleClockRadioButton.Location = new System.Drawing.Point(41, 31);
-            this.CircleClockRadioButton.Name = "CircleClockRadioButton";
-            this.CircleClockRadioButton.Size = new System.Drawing.Size(14, 13);
-            this.CircleClockRadioButton.TabIndex = 25;
-            this.CircleClockRadioButton.TabStop = true;
-            this.CircleClockRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // RectangleClockPictureBox
-            // 
-            this.RectangleClockPictureBox.Image = global::WallClockPlugin.View.Properties.Resources.RectangleClock_52x52;
-            this.RectangleClockPictureBox.Location = new System.Drawing.Point(120, 50);
-            this.RectangleClockPictureBox.Margin = new System.Windows.Forms.Padding(3, 3, 19, 19);
-            this.RectangleClockPictureBox.Name = "RectangleClockPictureBox";
-            this.RectangleClockPictureBox.Size = new System.Drawing.Size(52, 52);
-            this.RectangleClockPictureBox.TabIndex = 26;
-            this.RectangleClockPictureBox.TabStop = false;
-            // 
-            // CircleClockPictrueBox
-            // 
-            this.CircleClockPictrueBox.Image = global::WallClockPlugin.View.Properties.Resources.CircleClock_52x52;
-            this.CircleClockPictrueBox.Location = new System.Drawing.Point(22, 50);
-            this.CircleClockPictrueBox.Margin = new System.Windows.Forms.Padding(19, 3, 3, 19);
-            this.CircleClockPictrueBox.Name = "CircleClockPictrueBox";
-            this.CircleClockPictrueBox.Size = new System.Drawing.Size(52, 52);
-            this.CircleClockPictrueBox.TabIndex = 25;
-            this.CircleClockPictrueBox.TabStop = false;
             // 
             // LengthHourHandValueLabel
             // 
@@ -527,10 +465,6 @@
             this.Text = "Wall Clock Plugin";
             this.ParametresGroupBox.ResumeLayout(false);
             this.ParametresGroupBox.PerformLayout();
-            this.ClockFormGroupBox.ResumeLayout(false);
-            this.ClockFormGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RectangleClockPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CircleClockPictrueBox)).EndInit();
             this.BuildGroupBox.ResumeLayout(false);
             this.BuildGroupBox.PerformLayout();
             this.ButtonsTableLayout.ResumeLayout(false);
@@ -580,11 +514,6 @@
         private System.Windows.Forms.Label LengthMinuteHandValueLabel;
         private System.Windows.Forms.PictureBox SolidWorksButton;
         private System.Windows.Forms.ToolTip ToolTip;
-        private System.Windows.Forms.GroupBox ClockFormGroupBox;
-        private System.Windows.Forms.PictureBox RectangleClockPictureBox;
-        private System.Windows.Forms.PictureBox CircleClockPictrueBox;
-        private System.Windows.Forms.RadioButton RectnagleClockRadioButton;
-        private System.Windows.Forms.RadioButton CircleClockRadioButton;
     }
 }
 

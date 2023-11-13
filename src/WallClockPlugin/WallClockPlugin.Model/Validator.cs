@@ -16,16 +16,5 @@
         {
             return value >= leftBorder && value <= rightBorder;
         }
-
-        /// <summary>
-        /// Проверка на положительность значения
-        /// </summary>
-        /// <param name="value"> Значение</param>
-        /// <returns> True - если значение положительное или равное 0,
-        /// false - если значение отрицательное</returns>
-        public static bool CheckPositiveValue(float value)
-        {
-            return value >= 0;
-        }
     }
 }

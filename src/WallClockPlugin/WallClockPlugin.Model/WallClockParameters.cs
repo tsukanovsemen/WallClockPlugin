@@ -68,17 +68,14 @@ namespace WallClockPlugin.Model
         private float _hourHandLength;
 
         /// <summary>
-        /// Форма часов
-        /// </summary>
-        private ClockForm _frameForm = ClockForm.CircleForm;
-
-        /// <summary>
         /// Радиус циферблата
         /// </summary>
         public float Radius
         {
-            get { return _radius; }
-
+            get
+            {
+                return _radius;
+            }
             set
             {
                 if (!Validator.ValidateRange(MIN_RADIUS, MAX_RADIUS, value))
@@ -96,8 +93,10 @@ namespace WallClockPlugin.Model
         /// </summary>
         public float SideWidth
         {
-            get { return _sideWidth; }
-
+            get
+            {
+                return _sideWidth;
+            }
             set
             {
                 if (!Validator.ValidateRange(MIN_SIDE_WIDTH, MAX_SIDE_WIDTH, value))
@@ -115,8 +114,10 @@ namespace WallClockPlugin.Model
         /// </summary>
         public float SideHeight
         {
-            get { return _sideHeight; }
-
+            get
+            {
+                return _sideHeight;
+            }
             set
             {
                 if (!Validator.ValidateRange(MIN_SIDE_HEIGHT, MAX_SIDE_HEIGHT, value))
@@ -134,8 +135,10 @@ namespace WallClockPlugin.Model
         /// </summary>
         public float MinuteHandLength
         {
-            get { return _minuteHandLength; }
-
+            get
+            {
+                return _minuteHandLength;
+            }
             set
             {
                 var minValue = MinMinuteHandLength();
@@ -156,8 +159,10 @@ namespace WallClockPlugin.Model
         /// </summary>
         public float HourHandLength
         {
-            get { return _hourHandLength; }
-
+            get
+            {
+                return _hourHandLength;
+            }
             set
             {
                 var minValue = MinHourHandLength();
@@ -179,14 +184,9 @@ namespace WallClockPlugin.Model
         public bool OnlyHours { get; set; } = false;
 
         /// <summary>
-        /// Форма часов
-        /// </summary>
-        public ClockForm FrameForm { get; set; }
-
-        /// <summary>
         /// Возвращает минимальный радиус циферблата
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Минимальный радиус циферблата</returns>
         public int MinRadius()
         {
             return MIN_RADIUS;
@@ -195,7 +195,7 @@ namespace WallClockPlugin.Model
         /// <summary>
         /// Возвращает минимальную ширину бортика
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Минимальная ширина бортика</returns>
         public int MinSideWidth()
         {
             return MIN_SIDE_WIDTH;
@@ -204,7 +204,7 @@ namespace WallClockPlugin.Model
         /// <summary>
         /// Возвращает минимальную высотку бортика
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Минимальная высота бортика</returns>
         public int MinSideHeight()
         {
             return MIN_SIDE_HEIGHT;
@@ -265,7 +265,7 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Метод возвращает максимальне значение длины минутной стрелки
+        /// Метод возвращает максимальное значение длины минутной стрелки
         /// </summary>
         /// <returns>Максимальное значение длины минутной стрелки</returns>
         public float MaxMinuteHandLength()
