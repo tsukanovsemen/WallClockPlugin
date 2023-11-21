@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WallClockPlugin.Model.UnitTests
+﻿namespace WallClockPlugin.Model.UnitTests
 {
+    using System;
     using NUnit.Framework;
     using WallClockPlugin.Model;
 
