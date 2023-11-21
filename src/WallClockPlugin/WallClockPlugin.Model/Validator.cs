@@ -1,17 +1,17 @@
 ﻿namespace WallClockPlugin.Model
 {
     /// <summary>
-    /// Класс для валидации данных
+    /// Класс для проверки данных.
     /// </summary>
     public class Validator
     {
         /// <summary>
-        /// Валидация входа значения в определенный диапазон [left;right]
+        /// Проверка входа значения в определенный диапазон [left;right].
         /// </summary>
-        /// <param name="leftBorder"> Левая граница диапазона</param>
-        /// <param name="rightBorder"> Правая граница диапазона</param>
-        /// <param name="value"> Значение</param>
-        /// <returns> True - если значение входит в диапазон, false - если нет</returns>
+        /// <param name="leftBorder"> Левая граница диапазона.</param>
+        /// <param name="rightBorder"> Правая граница диапазона.</param>
+        /// <param name="value"> Значение.</param>
+        /// <returns> True - если значение входит в диапазон, false - если нет.</returns>
         public static bool ValidateRange(float leftBorder, float rightBorder, float value)
         {
             return value >= leftBorder && value <= rightBorder;

@@ -1,30 +1,18 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Diagnostics;
-using WallClockPlugin.Model;
-using System.Collections.Generic;
-
-namespace WallClockPlugin.View
+﻿namespace WallClockPlugin.View
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Windows.Forms;
+    using WallClockPlugin.Model;
+
+    /// <summary>
+    /// Главная форма класса.
+    /// </summary>
     public partial class MainForm : Form
     {
         /// <summary>
-        /// Builder для построения модели часов
-        /// </summary>
-        public WallClockBuilder Builder { get; private set; } = new WallClockBuilder();
-
-        /// <summary>
-        /// Параметры задаваемые для валидации и построения
-        /// </summary>
-        public WallClockParameters Parameters { get; private set; } = new WallClockParameters();
-
-        /// <summary>
-        /// Словарь ошибок
-        /// </summary>
-        private Dictionary<TextBox, string> ArgumentErrors { get; set; }
-
-        /// <summary>
-        /// Создание объекта главной формы
+        /// Создание объекта главной формы.
         /// </summary>
         public MainForm()
         {
@@ -33,7 +21,22 @@ namespace WallClockPlugin.View
         }
 
         /// <summary>
-        /// Инициализация словаря ошибок
+        /// Builder для построения модели часов.
+        /// </summary>
+        public WallClockBuilder Builder { get; private set; } = new WallClockBuilder();
+
+        /// <summary>
+        /// Параметры задаваемые для проверки и построения.
+        /// </summary>
+        public WallClockParameters Parameters { get; private set; } = new WallClockParameters();
+
+        /// <summary>
+        /// Словарь ошибок.
+        /// </summary>
+        private Dictionary<TextBox, string> ArgumentErrors { get; set; }
+
+        /// <summary>
+        /// Инициализация словаря ошибок.
         /// </summary>
         private void InitializeArgumentErrors()
         {
@@ -43,14 +46,14 @@ namespace WallClockPlugin.View
                 { MinuteHandLengthTextBox, string.Empty },
                 { HourHandLengthTextBox, string.Empty },
                 { SideWidthTextBox, string.Empty },
-                {SideHeightTextBox, string.Empty }
+                { SideHeightTextBox, string.Empty }
             };
         }
 
         /// <summary>
-        /// Проверка формы на ввод ошибок
+        /// Проверка формы на ввод ошибок.
         /// </summary>
-        /// <returns>True - если ошибок нет, False - если ошибки есть</returns>
+        /// <returns>True - если ошибок нет, False - если ошибки есть.</returns>
         private bool CheckFormOnErrors()
         {
             string errors = string.Empty;
@@ -77,7 +80,7 @@ namespace WallClockPlugin.View
         {
             BuildButton.Image = Properties.Resources.BuildButton_hovered_52x52;
             ToolTip.Active = true;
-            ToolTip.Show("Построить объект", this.BuildButton);
+            ToolTip.Show("Построить объект", BuildButton);
         }
 
         private void BuildButton_MouseLeave(object sender, EventArgs e)
@@ -90,14 +93,14 @@ namespace WallClockPlugin.View
         {
             GitHubButton.Image = Properties.Resources.GitHubButton_hovered_52x52;
             ToolTip.Active = true;
-            ToolTip.Show("GitHub разработчика", this.GitHubButton);
+            ToolTip.Show("GitHub разработчика", GitHubButton);
         }
 
         private void SolidWorksButton_MouseEnter(object sender, EventArgs e)
         {
             SolidWorksButton.Image = Properties.Resources.SolidWorksButton_hovered_52x52;
             ToolTip.Active = true;
-            ToolTip.Show("Сайт SolidWorks", this.SolidWorksButton);
+            ToolTip.Show("Сайт SolidWorks", SolidWorksButton);
         }
 
         private void GitHubButton_MouseLeave(object sender, EventArgs e)
