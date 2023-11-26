@@ -76,6 +76,16 @@
             return resultCheck;
         }
 
+        /// <summary>
+        /// Проверка на правильность ввода символа в поле.
+        /// </summary>
+        /// <param name="character">Символ.</param>
+        /// <returns>true - если введен некорректный символ, false - если символ корректен.</returns>
+        private bool CheckIncorrectedInputCharacter(char character)
+        {
+            return !char.IsDigit(character) && !char.IsControl(character);
+        }
+
         private void BuildButton_MouseEnter(object sender, EventArgs e)
         {
             BuildButton.Image = Properties.Resources.BuildButton_hovered_52x52;
@@ -240,6 +250,36 @@
 
             SideHeightTextBox.BackColor = ColorsWallClockPlugin.COLOR_CORRECTLY;
             ArgumentErrors[SideHeightTextBox] = string.Empty;
+        }
+
+        private void RadiusTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var character = e.KeyChar;
+            e.Handled = CheckIncorrectedInputCharacter(character);
+        }
+
+        private void MinuteHandLengthTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var character = e.KeyChar;
+            e.Handled = CheckIncorrectedInputCharacter(character);
+        }
+
+        private void HourHandLengthTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var character = e.KeyChar;
+            e.Handled = CheckIncorrectedInputCharacter(character);
+        }
+
+        private void SideWidthTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var character = e.KeyChar;
+            e.Handled = CheckIncorrectedInputCharacter(character);
+        }
+
+        private void SideHeightTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var character = e.KeyChar;
+            e.Handled = CheckIncorrectedInputCharacter(character);
         }
     }
 }

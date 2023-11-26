@@ -85,7 +85,6 @@
         /// <param name="radius">Радиус часов.</param>
         /// <param name="sideWidth">Ширина бортика.</param>
         /// <param name="sideHeight">Высота бортика.</param>
-        /// <param name="clockForm">Форма часов.</param>
         private void BuildClockFrame(float radius, float sideWidth, float sideHeight)
         {
             Wrapper.CreateCircleSketch(
@@ -229,7 +228,8 @@
         private void BuildMinuteHand(float length, float width, float angle)
         {
             Wrapper.CreateRhombusSketch(length, width, XCenter, YCenter, ZCenter, angle);
-            Wrapper.ExtrudePart(3, "Выдавливание стрелки минуты");
+            var extrusionDepth = 3;
+            Wrapper.ExtrudePart(extrusionDepth, "Выдавливание стрелки минуты");
         }
 
         /// <summary>
@@ -241,9 +241,11 @@
         private void BuildHourHand(float length, float width, float angle)
         {
             Wrapper.CreateRhombusSketch(length, width, XCenter, YCenter, ZCenter, angle);
-            Wrapper.ExtrudePart(10, "Выдавливание стрелки часов");
+            var extrusionDepth = 10;
+            Wrapper.ExtrudePart(extrusionDepth, "Выдавливание стрелки часов");
             Wrapper.CreateRhombusSketch(length, width, XCenter, YCenter, ZCenter, angle);
-            Wrapper.CutPart(5, "Вырез стрелки часов");
+            var cutDepth = 5;
+            Wrapper.CutPart(cutDepth, "Вырез стрелки часов");
         }
 
         /// <summary>

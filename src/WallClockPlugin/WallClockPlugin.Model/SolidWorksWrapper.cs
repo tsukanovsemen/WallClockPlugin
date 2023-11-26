@@ -297,8 +297,8 @@
             var x3 = verticalDiagonalLength * Math.Sin(angleInRadian);
             var y3 = Math.Sqrt(Math.Pow(verticalDiagonalLength, 2) - Math.Pow(x3, 2));
 
-            var hypotenuse = Math.Sqrt(Math.Pow((verticalDiagonalLength / 2), 2)
-                + Math.Pow((horizontalDiagonalLength / 2), 2));
+            var hypotenuse = Math.Sqrt(Math.Pow( verticalDiagonalLength / 2, 2)
+                + Math.Pow( horizontalDiagonalLength / 2, 2));
 
             var innerAngleInRadian = Math.Asin(horizontalDiagonalLength / 2 / hypotenuse);
 
