@@ -68,6 +68,21 @@
         /// <summary>
         /// Выдавливание центральной окружности для стрелок часов.
         /// </summary>
-        ExtrudeCentralCircleForHands
+        ExtrudeCentralCircleForHands,
+
+        /// <summary>
+        /// Создание эскиза выреза бортика.
+        /// </summary>
+        CreateSideCutSketch,
+
+        /// <summary>
+        /// Вырез узора бортика.
+        /// </summary>
+        CutSideCutCircle,
+
+        /// <summary>
+        /// Создание кругового массивы вырезов бортика.
+        /// </summary>
+        CreateCirckeArraySideCuts
     }
 }

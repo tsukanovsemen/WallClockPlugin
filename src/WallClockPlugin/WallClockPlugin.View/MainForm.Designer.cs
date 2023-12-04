@@ -32,6 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MainFormMenuStrip = new System.Windows.Forms.MenuStrip();
             this.ParametresGroupBox = new System.Windows.Forms.GroupBox();
+            this.UnitsMMLabel7 = new System.Windows.Forms.Label();
+            this.UnitsMMLabel6 = new System.Windows.Forms.Label();
+            this.CutsCountValueLabel = new System.Windows.Forms.Label();
+            this.CutRadiusValueLabel = new System.Windows.Forms.Label();
+            this.CutsCountLabel = new System.Windows.Forms.Label();
+            this.CutRadiusLabel = new System.Windows.Forms.Label();
+            this.CutsCountTextBox = new System.Windows.Forms.TextBox();
+            this.CutRadiusTextBox = new System.Windows.Forms.TextBox();
+            this.AddSideCutsCheckBox = new System.Windows.Forms.CheckBox();
             this.LengthHourHandValueLabel = new System.Windows.Forms.Label();
             this.LengthMinuteHandValueLabel = new System.Windows.Forms.Label();
             this.SideHeightValueLabel = new System.Windows.Forms.Label();
@@ -87,6 +96,16 @@
             this.ParametresGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ParametresGroupBox.Controls.Add(this.UnitsMMLabel7);
+            this.ParametresGroupBox.Controls.Add(this.UnitsMMLabel6);
+            this.ParametresGroupBox.Controls.Add(this.CutsCountValueLabel);
+            this.ParametresGroupBox.Controls.Add(this.CutRadiusValueLabel);
+            this.ParametresGroupBox.Controls.Add(this.ClockStateOnlyHoursCheckBox);
+            this.ParametresGroupBox.Controls.Add(this.CutsCountLabel);
+            this.ParametresGroupBox.Controls.Add(this.CutRadiusLabel);
+            this.ParametresGroupBox.Controls.Add(this.CutsCountTextBox);
+            this.ParametresGroupBox.Controls.Add(this.CutRadiusTextBox);
+            this.ParametresGroupBox.Controls.Add(this.AddSideCutsCheckBox);
             this.ParametresGroupBox.Controls.Add(this.LengthHourHandValueLabel);
             this.ParametresGroupBox.Controls.Add(this.LengthMinuteHandValueLabel);
             this.ParametresGroupBox.Controls.Add(this.SideHeightValueLabel);
@@ -99,7 +118,6 @@
             this.ParametresGroupBox.Controls.Add(this.label9);
             this.ParametresGroupBox.Controls.Add(this.UnitsMMLabel1);
             this.ParametresGroupBox.Controls.Add(this.RadiusValueLabel);
-            this.ParametresGroupBox.Controls.Add(this.ClockStateOnlyHoursCheckBox);
             this.ParametresGroupBox.Controls.Add(this.SideHeightLabel);
             this.ParametresGroupBox.Controls.Add(this.SideWidthLabel);
             this.ParametresGroupBox.Controls.Add(this.LengthHourHandLabel);
@@ -117,6 +135,102 @@
             this.ParametresGroupBox.TabIndex = 1;
             this.ParametresGroupBox.TabStop = false;
             this.ParametresGroupBox.Text = "Параметры и элементы управления";
+            // 
+            // UnitsMMLabel7
+            // 
+            this.UnitsMMLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UnitsMMLabel7.AutoSize = true;
+            this.UnitsMMLabel7.Location = new System.Drawing.Point(287, 289);
+            this.UnitsMMLabel7.Name = "UnitsMMLabel7";
+            this.UnitsMMLabel7.Size = new System.Drawing.Size(25, 15);
+            this.UnitsMMLabel7.TabIndex = 32;
+            this.UnitsMMLabel7.Text = "мм";
+            // 
+            // UnitsMMLabel6
+            // 
+            this.UnitsMMLabel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UnitsMMLabel6.AutoSize = true;
+            this.UnitsMMLabel6.Location = new System.Drawing.Point(287, 256);
+            this.UnitsMMLabel6.Name = "UnitsMMLabel6";
+            this.UnitsMMLabel6.Size = new System.Drawing.Size(25, 15);
+            this.UnitsMMLabel6.TabIndex = 31;
+            this.UnitsMMLabel6.Text = "мм";
+            // 
+            // CutsCountValueLabel
+            // 
+            this.CutsCountValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CutsCountValueLabel.AutoSize = true;
+            this.CutsCountValueLabel.Location = new System.Drawing.Point(370, 289);
+            this.CutsCountValueLabel.Name = "CutsCountValueLabel";
+            this.CutsCountValueLabel.Size = new System.Drawing.Size(12, 15);
+            this.CutsCountValueLabel.TabIndex = 30;
+            this.CutsCountValueLabel.Text = "-";
+            // 
+            // CutRadiusValueLabel
+            // 
+            this.CutRadiusValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CutRadiusValueLabel.AutoSize = true;
+            this.CutRadiusValueLabel.Location = new System.Drawing.Point(370, 256);
+            this.CutRadiusValueLabel.Name = "CutRadiusValueLabel";
+            this.CutRadiusValueLabel.Size = new System.Drawing.Size(12, 15);
+            this.CutRadiusValueLabel.TabIndex = 29;
+            this.CutRadiusValueLabel.Text = "-";
+            // 
+            // CutsCountLabel
+            // 
+            this.CutsCountLabel.AutoSize = true;
+            this.CutsCountLabel.Location = new System.Drawing.Point(6, 289);
+            this.CutsCountLabel.Name = "CutsCountLabel";
+            this.CutsCountLabel.Size = new System.Drawing.Size(144, 15);
+            this.CutsCountLabel.TabIndex = 28;
+            this.CutsCountLabel.Text = "Количество вырезов";
+            // 
+            // CutRadiusLabel
+            // 
+            this.CutRadiusLabel.AutoSize = true;
+            this.CutRadiusLabel.Location = new System.Drawing.Point(6, 256);
+            this.CutRadiusLabel.Name = "CutRadiusLabel";
+            this.CutRadiusLabel.Size = new System.Drawing.Size(107, 15);
+            this.CutRadiusLabel.TabIndex = 27;
+            this.CutRadiusLabel.Text = "Радиус выреза";
+            // 
+            // CutsCountTextBox
+            // 
+            this.CutsCountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CutsCountTextBox.Enabled = false;
+            this.CutsCountTextBox.Location = new System.Drawing.Point(158, 286);
+            this.CutsCountTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.CutsCountTextBox.Name = "CutsCountTextBox";
+            this.CutsCountTextBox.Size = new System.Drawing.Size(110, 23);
+            this.CutsCountTextBox.TabIndex = 26;
+            this.CutsCountTextBox.TextChanged += new System.EventHandler(this.CutsCountTextBox_TextChanged);
+            this.CutsCountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CutsCountTextBox_KeyPress);
+            // 
+            // CutRadiusTextBox
+            // 
+            this.CutRadiusTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CutRadiusTextBox.Enabled = false;
+            this.CutRadiusTextBox.Location = new System.Drawing.Point(158, 253);
+            this.CutRadiusTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.CutRadiusTextBox.Name = "CutRadiusTextBox";
+            this.CutRadiusTextBox.Size = new System.Drawing.Size(110, 23);
+            this.CutRadiusTextBox.TabIndex = 25;
+            this.CutRadiusTextBox.TextChanged += new System.EventHandler(this.CutRadiusTextBox_TextChanged);
+            this.CutRadiusTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CutRadiusTextBox_KeyPress);
+            // 
+            // AddSideCutsCheckBox
+            // 
+            this.AddSideCutsCheckBox.AutoSize = true;
+            this.AddSideCutsCheckBox.Location = new System.Drawing.Point(9, 228);
+            this.AddSideCutsCheckBox.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.AddSideCutsCheckBox.Name = "AddSideCutsCheckBox";
+            this.AddSideCutsCheckBox.Size = new System.Drawing.Size(225, 19);
+            this.AddSideCutsCheckBox.TabIndex = 24;
+            this.AddSideCutsCheckBox.Text = "Добавить вырезы по бортику";
+            this.AddSideCutsCheckBox.UseVisualStyleBackColor = true;
+            this.AddSideCutsCheckBox.CheckedChanged += new System.EventHandler(this.AddSideCutsCheckBox_CheckedChanged);
             // 
             // LengthHourHandValueLabel
             // 
@@ -144,9 +258,9 @@
             this.SideHeightValueLabel.AutoSize = true;
             this.SideHeightValueLabel.Location = new System.Drawing.Point(370, 178);
             this.SideHeightValueLabel.Name = "SideHeightValueLabel";
-            this.SideHeightValueLabel.Size = new System.Drawing.Size(52, 15);
+            this.SideHeightValueLabel.Size = new System.Drawing.Size(12, 15);
             this.SideHeightValueLabel.TabIndex = 21;
-            this.SideHeightValueLabel.Text = "20 - 40";
+            this.SideHeightValueLabel.Text = "-";
             // 
             // UnitsMMLabel5
             // 
@@ -174,9 +288,9 @@
             this.SideWidthValueLabel.AutoSize = true;
             this.SideWidthValueLabel.Location = new System.Drawing.Point(370, 143);
             this.SideWidthValueLabel.Name = "SideWidthValueLabel";
-            this.SideWidthValueLabel.Size = new System.Drawing.Size(52, 15);
+            this.SideWidthValueLabel.Size = new System.Drawing.Size(12, 15);
             this.SideWidthValueLabel.TabIndex = 18;
-            this.SideWidthValueLabel.Text = "30 - 60";
+            this.SideWidthValueLabel.Text = "-";
             // 
             // UnitsMMLabel3
             // 
@@ -232,14 +346,14 @@
             this.RadiusValueLabel.AutoSize = true;
             this.RadiusValueLabel.Location = new System.Drawing.Point(370, 35);
             this.RadiusValueLabel.Name = "RadiusValueLabel";
-            this.RadiusValueLabel.Size = new System.Drawing.Size(68, 15);
+            this.RadiusValueLabel.Size = new System.Drawing.Size(12, 15);
             this.RadiusValueLabel.TabIndex = 11;
-            this.RadiusValueLabel.Text = "100 - 200";
+            this.RadiusValueLabel.Text = "-";
             // 
             // ClockStateOnlyHoursCheckBox
             // 
             this.ClockStateOnlyHoursCheckBox.AutoSize = true;
-            this.ClockStateOnlyHoursCheckBox.Location = new System.Drawing.Point(8, 222);
+            this.ClockStateOnlyHoursCheckBox.Location = new System.Drawing.Point(9, 376);
             this.ClockStateOnlyHoursCheckBox.Name = "ClockStateOnlyHoursCheckBox";
             this.ClockStateOnlyHoursCheckBox.Size = new System.Drawing.Size(195, 19);
             this.ClockStateOnlyHoursCheckBox.TabIndex = 10;
@@ -250,7 +364,7 @@
             // SideHeightLabel
             // 
             this.SideHeightLabel.AutoSize = true;
-            this.SideHeightLabel.Location = new System.Drawing.Point(6, 178);
+            this.SideHeightLabel.Location = new System.Drawing.Point(5, 178);
             this.SideHeightLabel.Name = "SideHeightLabel";
             this.SideHeightLabel.Size = new System.Drawing.Size(117, 30);
             this.SideHeightLabel.TabIndex = 9;
@@ -279,9 +393,9 @@
             this.LengthMinuteHandLabel.AutoSize = true;
             this.LengthMinuteHandLabel.Location = new System.Drawing.Point(6, 71);
             this.LengthMinuteHandLabel.Name = "LengthMinuteHandLabel";
-            this.LengthMinuteHandLabel.Size = new System.Drawing.Size(118, 45);
+            this.LengthMinuteHandLabel.Size = new System.Drawing.Size(118, 30);
             this.LengthMinuteHandLabel.TabIndex = 6;
-            this.LengthMinuteHandLabel.Text = "Длина минутной\r\nстрелки\r\n\r\n";
+            this.LengthMinuteHandLabel.Text = "Длина минутной\r\nстрелки";
             // 
             // RadiusLabel
             // 
@@ -522,6 +636,15 @@
         private System.Windows.Forms.Label LengthMinuteHandValueLabel;
         private System.Windows.Forms.PictureBox SolidWorksButton;
         private System.Windows.Forms.ToolTip ToolTip;
+        private System.Windows.Forms.Label CutsCountLabel;
+        private System.Windows.Forms.Label CutRadiusLabel;
+        private System.Windows.Forms.TextBox CutsCountTextBox;
+        private System.Windows.Forms.TextBox CutRadiusTextBox;
+        private System.Windows.Forms.CheckBox AddSideCutsCheckBox;
+        private System.Windows.Forms.Label CutsCountValueLabel;
+        private System.Windows.Forms.Label CutRadiusValueLabel;
+        private System.Windows.Forms.Label UnitsMMLabel7;
+        private System.Windows.Forms.Label UnitsMMLabel6;
     }
 }
 

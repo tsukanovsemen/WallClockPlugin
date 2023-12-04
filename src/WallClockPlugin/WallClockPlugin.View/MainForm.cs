@@ -18,6 +18,7 @@
         {
             InitializeComponent();
             InitializeArgumentErrors();
+            SetValueLabels();
         }
 
         /// <summary>
@@ -46,7 +47,9 @@
                 { MinuteHandLengthTextBox, string.Empty },
                 { HourHandLengthTextBox, string.Empty },
                 { SideWidthTextBox, string.Empty },
-                { SideHeightTextBox, string.Empty }
+                { SideHeightTextBox, string.Empty },
+                { CutRadiusTextBox, string.Empty },
+                { CutsCountTextBox, string.Empty },
             };
         }
 
@@ -84,6 +87,32 @@
         private bool CheckIncorrectedInputCharacter(char character)
         {
             return !char.IsDigit(character) && !char.IsControl(character);
+        }
+
+        /// <summary>
+        /// Установка начальных значений для всех Label параметров.
+        /// </summary>
+        private void SetValueLabels()
+        {
+            RadiusValueLabel.Text = $"{Parameters.MinRadius()} - {Parameters.MaxRadius()}";
+
+            LengthMinuteHandValueLabel.Text = $"{Parameters.MinMinuteHandLength()} " +
+                $"- {Parameters.MaxMinuteHandLength()}";
+
+            LengthHourHandValueLabel.Text = $"{Parameters.MinHourHandLength()} " +
+                $"- {Parameters.MaxHourHandLength()}";
+
+            SideWidthValueLabel.Text = $"{Parameters.MinSideWidth()} " +
+                $"- {Parameters.MaxSideWidth()}";
+
+            SideHeightValueLabel.Text = $"{Parameters.MinSideHeight()} " +
+                $"- {Parameters.MaxSideHeight()}";
+
+            CutRadiusValueLabel.Text = $"{Parameters.MinCutRadius()}" +
+                $" - {Parameters.MaxCutRadius()}";
+
+            CutsCountValueLabel.Text = $"{Parameters.MinCutsCount()} " +
+                $"- {Parameters.MaxCutsCount()}";
         }
 
         private void BuildButton_MouseEnter(object sender, EventArgs e)
@@ -174,6 +203,8 @@
 
             LengthHourHandValueLabel.Text = Parameters.MinHourHandLength()
                 + " - " + Parameters.MaxHourHandLength();
+
+            CutsCountValueLabel.Text = $"{Parameters.MinCutsCount()} - {Parameters.MaxCutsCount()}";
         }
 
         private void MinuteHandLengthTextBox_TextChanged(object sender, EventArgs e)
@@ -231,6 +262,9 @@
 
             SideWidthTextBox.BackColor = ColorsWallClockPlugin.COLOR_CORRECTLY;
             ArgumentErrors[SideWidthTextBox] = string.Empty;
+
+            CutRadiusValueLabel.Text = $"{Parameters.MinCutRadius()} - {Parameters.MaxCutRadius()}";
+            CutsCountValueLabel.Text = $"{Parameters.MinCutsCount()} - {Parameters.MaxCutsCount()}";
         }
 
         private void SideHeightTextBox_TextChanged(object sender, EventArgs e)
@@ -277,6 +311,65 @@
         }
 
         private void SideHeightTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var character = e.KeyChar;
+            e.Handled = CheckIncorrectedInputCharacter(character);
+        }
+
+        private void AddSideCutsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CutsCountTextBox.Enabled = AddSideCutsCheckBox.Checked;
+            CutRadiusTextBox.Enabled = AddSideCutsCheckBox.Checked;
+            Parameters.SideCuts = AddSideCutsCheckBox.Checked;
+        }
+
+        private void CutRadiusTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Parameters.CutRadius = !string.IsNullOrEmpty(CutRadiusTextBox.Text)
+                    ? float.Parse(CutRadiusTextBox.Text) : Parameters.MinCutRadius();
+            }
+            catch (ArgumentException exception)
+            {
+                CutRadiusTextBox.BackColor = ColorsWallClockPlugin.COLOR_ERROR;
+                ArgumentErrors[CutRadiusTextBox] = exception.Message;
+
+                return;
+            }
+
+            CutRadiusTextBox.BackColor = ColorsWallClockPlugin.COLOR_CORRECTLY;
+            ArgumentErrors[CutRadiusTextBox] = string.Empty;
+
+            CutsCountValueLabel.Text = $"{Parameters.MinCutsCount()} - {Parameters.MaxCutsCount()}";
+        }
+
+        private void CutRadiusTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            var character = e.KeyChar;
+            e.Handled = CheckIncorrectedInputCharacter(character);
+        }
+
+        private void CutsCountTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Parameters.CutsCount = !string.IsNullOrEmpty(CutsCountTextBox.Text)
+                    ? int.Parse(CutsCountTextBox.Text) : Parameters.MinCutsCount();
+            }
+            catch (ArgumentException exception)
+            {
+                CutsCountTextBox.BackColor = ColorsWallClockPlugin.COLOR_ERROR;
+                ArgumentErrors[CutsCountTextBox] = exception.Message;
+
+                return;
+            }
+
+            CutsCountTextBox.BackColor = ColorsWallClockPlugin.COLOR_CORRECTLY;
+            ArgumentErrors[CutsCountTextBox] = string.Empty;
+        }
+
+        private void CutsCountTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             var character = e.KeyChar;
             e.Handled = CheckIncorrectedInputCharacter(character);

@@ -76,6 +76,15 @@
                 parameters.MinuteHandLength,
                 widthHand);
 
+            if (parameters.SideCuts)
+            {
+                BuildSideCuts(
+                    parameters.CutRadius,
+                    parameters.CutsCount,
+                    parameters.Radius + parameters.SideWidth,
+                    parameters.SideHeight);
+            }
+
             Wrapper.ShowTrimetry();
         }
 
@@ -249,6 +258,44 @@
         }
 
         /// <summary>
+        /// Построение вырезов бортика.
+        /// </summary>
+        /// <param name="cutRadius">Радиус выреза.</param>
+        /// <param name="cutsCount">Количество вырезов.</param>
+        /// <param name="clockRadius">Радиус часов.</param>
+        /// <param name="cutDepth">Глубина выреза.</param>
+        private void BuildSideCuts(
+            float cutRadius,
+            int cutsCount,
+            float clockRadius,
+            float cutDepth)
+        {
+            var x = 0;
+            var y = clockRadius;
+            var z = 0;
+
+            Wrapper.CreateCircleSketch(
+                cutRadius,
+                x,
+                y,
+                z,
+                BuildOperations[WallClockBuildOperations.CreateSideCutSketch]);
+
+            Wrapper.CutPart(
+                cutDepth,
+                BuildOperations[WallClockBuildOperations.CutSideCutCircle]);
+
+            float angleBeetweenCuts = 360.0f / (float)cutsCount;
+
+            Wrapper.CreateCircularArray(
+                cutsCount,
+                angleBeetweenCuts,
+                BuildOperations[WallClockBuildOperations.CreateCirckeArraySideCuts],
+                BuildOperations[WallClockBuildOperations.CutSideCutCircle],
+                BuildOperations[WallClockBuildOperations.CreateAxisLine]);
+        }
+
+        /// <summary>
         /// Инициализирует и возвращает все необходимые операции построения.
         /// </summary>
         /// <returns>Коллекцию операций построения.</returns>
@@ -307,6 +354,18 @@
             operations.Add(
                 WallClockBuildOperations.ExtrudeCentralCircleForHands,
                 "Выдавливание центральной окружности для стрелок часов");
+
+            operations.Add(
+                WallClockBuildOperations.CreateSideCutSketch,
+                "Создание эскиза выреза бортика");
+
+            operations.Add(
+                WallClockBuildOperations.CutSideCutCircle,
+                "Вырез узора бортика");
+
+            operations.Add(
+                WallClockBuildOperations.CreateCirckeArraySideCuts,
+                "Создание кругового массивы вырезов бортика");
 
             return operations;
         }
