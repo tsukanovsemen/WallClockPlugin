@@ -88,6 +88,15 @@
         private int _cutsCount;
 
         /// <summary>
+        /// Создает объект класса.
+        /// </summary>
+        public WallClockParameters()
+        {
+            MinuteHandLength = MaxMinuteHandLength();
+            HourHandLength = MaxHourHandLength();
+        }
+
+        /// <summary>
         /// Радиус циферблата.
         /// </summary>
         public float Radius
