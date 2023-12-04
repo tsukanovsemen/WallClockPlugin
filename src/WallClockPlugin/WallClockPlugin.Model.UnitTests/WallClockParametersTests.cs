@@ -369,5 +369,215 @@
             // Assert
             Assert.AreEqual(expectedValue, actualValue);
         }
+
+        [Test(Description = "Ввод корректного значения для радиуса выреза.")]
+        public void CutRadius_SetCorrectValue_ReturnsSameValue()
+        {
+            // Setup
+            WallClockParameters parameters = new WallClockParameters
+            {
+                SideWidth = 55
+            };
+            var cutRadius = 25;
+            var expectedCutRadius = cutRadius;
+
+            // Act
+            parameters.CutRadius = cutRadius;
+            var actualCutRadius = parameters.CutRadius;
+
+            // Assert
+            Assert.AreEqual(expectedCutRadius, actualCutRadius);
+        }
+
+        [Test(Description = "Ввод некорректного значения для радиуса выреза.")]
+        public void CutRadius_SetIncorrectValue_ThrowArgumentException()
+        {
+            // Setup
+            WallClockParameters parameters = new WallClockParameters
+            {
+                SideWidth = 55
+            };
+            var cutRadius = 60;
+            var leftBorderOfValue = parameters.MinCutRadius();
+            var rightBorderOfValue = parameters.MaxCutRadius();
+            var message = $"Исключение должно быть брошено если входное " +
+                $"значение больше чем {leftBorderOfValue} или меньше чем {rightBorderOfValue}.";
+
+            // Assert
+            Assert.Throws<ArgumentException>(() =>
+            {
+                // Act
+                parameters.HourHandLength = cutRadius;
+            },
+           message);
+        }
+
+        [Test(Description = "Ввод корректного значения для количества допустимых вырезов.")]
+        public void CutsCount_SetCorrectValue_ReturnsSameValue()
+        {
+            // Setup
+            WallClockParameters parameters = new WallClockParameters
+            {
+                SideWidth = 55,
+                Radius = 150
+            };
+            var inputCutsCount = 5;
+            var expectedCutsCount = inputCutsCount;
+
+            // Act
+            parameters.CutsCount = inputCutsCount;
+            var actualCutsCount = parameters.CutsCount;
+
+            // Assert
+            Assert.AreEqual(expectedCutsCount, actualCutsCount);
+        }
+
+        [Test(Description = "Ввод некорректного значения для количества допустимых вырезов.")]
+        public void CutsCount_SetIncorrectValue_ThrowArgumentException()
+        {
+            // Setup
+            WallClockParameters parameters = new WallClockParameters
+            {
+                SideWidth = 30,
+                Radius = 100
+            };
+            var inputValue = 100;
+            var leftBorderOfValue = parameters.MinCutsCount();
+            var rightBorderOfValue = parameters.MaxCutsCount();
+            var message = $"Исключение должно быть брошено если входное " +
+               $"значение больше чем {leftBorderOfValue} или меньше чем {rightBorderOfValue}.";
+
+            // Assert
+            Assert.Throws<ArgumentException>(() =>
+            {
+                // Act
+                parameters.HourHandLength = inputValue;
+            },
+           message);
+        }
+
+        [Test(Description = "Ввод значения для состояния - с вырезами/без.")]
+        public void SideCuts_SetValue_ReturnsSameValue()
+        {
+            // Setup
+            WallClockParameters parameters = new WallClockParameters();
+            var inputStateValue = true;
+            var expectedValue = inputStateValue;
+
+            // Act
+            parameters.SideCuts = inputStateValue;
+            var actualValue = parameters.SideCuts;
+
+            // Assert
+            Assert.AreEqual(expectedValue, actualValue);
+        }
+
+        [Test(Description = "Возврат корректного значения для максимального значения радиуса.")]
+        public void MaxRadius_GetMaxRadius_ReturnsCorrectValue()
+        {
+            // Setup
+            WallClockParameters parameters = new WallClockParameters();
+            var expectedMaxRadius = 200;
+
+            // Act
+            var actualMaxRadius = parameters.MaxRadius();
+
+            // Assert
+            Assert.AreEqual(expectedMaxRadius, actualMaxRadius);
+        }
+
+        [Test(Description = "Возврат корректного значения для максимальной ширины бортика.")]
+        public void MaxSideWidth_GetMaxSideWidth_ReturnsCorrectValue()
+        {
+            // Setup
+            WallClockParameters parameters = new WallClockParameters();
+            var expectedValue = 60;
+
+            // Act
+            var actualValue = parameters.MaxSideWidth();
+
+            // Assert
+            Assert.AreEqual(expectedValue, actualValue);
+        }
+
+        [Test(Description = "Возврат корректного значения для максимальной высоты бортика.")]
+        public void MaxSideHeight_GetMaxSideHeight_ReturnsCorrectValue()
+        {
+            // Setup
+            WallClockParameters parameters = new WallClockParameters();
+            var expectedValue = 40;
+
+            // Act
+            var actualValue = parameters.MaxSideHeight();
+
+            // Assert
+            Assert.AreEqual(expectedValue, actualValue);
+        }
+
+        [Test(Description = "Возвращает корректное значение для максимально допустимого " +
+            "количества вырезов.")]
+        public void MaxCutsCount_GetMaxCutsCount_ReturnsCorrectValue()
+        {
+            // Setup
+            WallClockParameters parameters = new WallClockParameters
+            {
+                SideWidth = 40,
+                Radius = 140,
+                CutRadius = 30
+            };
+
+            var expectedValue = 18;
+
+            // Act
+            var actualValue = parameters.MaxCutsCount();
+
+            // Assert
+            Assert.AreEqual(expectedValue, actualValue);
+        }
+
+        [Test(Description = "Возвращает корректное значения для минимального количества вырезов.")]
+        public void MinCutsCount_GetMinCutsCount_ReturnsCorrectValue()
+        {
+            // Setup
+            WallClockParameters parameters = new WallClockParameters();
+            var expectedValue = 1;
+
+            // Act
+            var actualValue = parameters.MinCutsCount();
+
+            // Assert
+            Assert.AreEqual(expectedValue, actualValue);
+        }
+
+        [Test(Description = "Возвращает корректное число для максимального радиуса вырезов.")]
+        public void MaxCutRadius_GetMaxCutRadius_ReturnsCorrectValue()
+        {
+            // Setup
+            WallClockParameters parameters = new WallClockParameters();
+            var sideWidth = 40;
+            parameters.SideWidth = sideWidth;
+            var expectedValue = sideWidth - 5;
+
+            // Act
+            var actualValue = parameters.MaxCutRadius();
+
+            // Assert
+            Assert.AreEqual(expectedValue, actualValue);
+        }
+
+        [Test(Description = "Возвращает корректное число для " +
+            "минимального значения радиуса вырезов.")]
+        public void MinCutRadius_GetMinCutRadius_ReturnsCorrectValue()
+        {
+            // Setup
+            WallClockParameters parameters = new WallClockParameters();
+            var expectedValue = 25;
+
+            // Act
+            var actualValue = parameters.MinCutRadius();
+
+            // Assert
+            Assert.AreEqual(expectedValue, actualValue);
+        }
     }
 }
