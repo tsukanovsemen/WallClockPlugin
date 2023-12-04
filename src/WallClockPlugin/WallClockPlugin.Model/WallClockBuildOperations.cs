@@ -1,73 +1,88 @@
 ﻿namespace WallClockPlugin.Model
 {
     /// <summary>
-    /// Операции для создания настенных часов
+    /// Операции для создания настенных часов.
     /// </summary>
     public enum WallClockBuildOperations
     {
         /// <summary>
-        /// Создание окружности для чаосв
+        /// Создание окружности для часов.
         /// </summary>
         CreateCircleForClock = 1,
 
         /// <summary>
-        /// Создание окружности для циферблата 
+        /// Создание окружности для циферблата.
         /// </summary>
         CreateCircleForClockFace,
 
         /// <summary>
-        /// Выдавливание окружности для часов
+        /// Выдавливание окружности для часов.
         /// </summary>
         ExtrudeCircleForClock,
 
         /// <summary>
-        /// Вырез окружности для циферблата
+        /// Вырез окружности для циферблата.
         /// </summary>
         CutCircleForClockFace,
 
         /// <summary>
-        /// Создание осевой лини
+        /// Создание осевой лини.
         /// </summary>
         CreateAxisLine,
 
         /// <summary>
-        /// Создание прямоугольника для шкалы часов
+        /// Создание прямоугольника для шкалы часов.
         /// </summary>
         CreateRectangleForHoursScale,
 
         /// <summary>
-        /// Создание прямоугольника для шкалы минут
+        /// Создание прямоугольника для шкалы минут.
         /// </summary>
         CreateRectangleForMinutesScale,
 
         /// <summary>
-        /// Выдавливание прямоугольника шкалы минут
+        /// Выдавливание прямоугольника шкалы минут.
         /// </summary>
         ExtrudeRectangleScaleMinutes,
 
         /// <summary>
-        /// Выдавливание прямоугольника шкалы часов
+        /// Выдавливание прямоугольника шкалы часов.
         /// </summary>
         ExtrudeRectangleScaleHours,
 
         /// <summary>
-        /// Создание массива шкалы часов
+        /// Создание массива шкалы часов.
         /// </summary>
         CreateCircleArrayHours,
 
         /// <summary>
-        /// Создание массива шкалы минут
+        /// Создание массива шкалы минут.
         /// </summary>
         CreateCircleArrayMinutes,
 
         /// <summary>
-        /// Создание центральной окружности для стрелок часов
+        /// Создание центральной окружности для стрелок часов.
         /// </summary>
         CreateCentralCircleForHands,
 
         /// <summary>
-        /// Выдавливание центральной окружности для стрелок часов
+        /// Выдавливание центральной окружности для стрелок часов.
         /// </summary>
-        ExtrudeCentralCircleForHands
+        ExtrudeCentralCircleForHands,
+
+        /// <summary>
+        /// Создание эскиза выреза бортика.
+        /// </summary>
+        CreateSideCutSketch,
+
+        /// <summary>
+        /// Вырез узора бортика.
+        /// </summary>
+        CutSideCutCircle,
+
+        /// <summary>
+        /// Создание кругового массивы вырезов бортика.
+        /// </summary>
+        CreateCirckeArraySideCuts
     }
 }

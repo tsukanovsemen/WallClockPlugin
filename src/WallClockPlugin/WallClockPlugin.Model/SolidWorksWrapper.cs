@@ -1,26 +1,26 @@
-﻿using System;
-using SolidWorks.Interop.sldworks;
-using SolidWorks.Interop.swconst;
-
-namespace WallClockPlugin.Model
+﻿namespace WallClockPlugin.Model
 {
+    using System;
+    using SolidWorks.Interop.sldworks;
+    using SolidWorks.Interop.swconst;
+
     /// <summary>
-    /// Класс-обертка для api SolidWorks
+    /// Класс-обертка для api SolidWorks.
     /// </summary>
     public class SolidWorksWrapper : ICADWrapper
     {
         /// <summary>
-        /// Объект SW api
+        /// Объект SW api.
         /// </summary>
         public SldWorks SolidWorks { get; private set; } = new SldWorks();
 
         /// <summary>
-        /// Объект для работы с созданными документами
+        /// Объект для работы с созданными документами.
         /// </summary>
         public ModelDoc2 ModelDocument { get; private set; }
 
         /// <summary>
-        /// Запуск САПР
+        /// Запуск САПР.
         /// </summary>
         public void RunCAD()
         {
@@ -29,7 +29,7 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Создание нового документа
+        /// Создание нового документа.
         /// </summary>
         public void CreateNewDocument()
         {
@@ -38,13 +38,13 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Создание эскиза круга
+        /// Создание эскиза круга.
         /// </summary>
-        /// <param name="radius">Радиус круга в мм</param>
-        /// <param name="xCenter">Координата x центра</param>
-        /// <param name="yCenter">Координата y центра</param>
-        /// <param name="zCenter">Координата z центра</param>
-        /// <param name="operationName">Название операции</param>
+        /// <param name="radius">Радиус круга в мм.</param>
+        /// <param name="xCenter">Координата x центра.</param>
+        /// <param name="yCenter">Координата y центра.</param>
+        /// <param name="zCenter">Координата z центра.</param>
+        /// <param name="operationName">Название операции.</param>
         public void CreateCircleSketch(
             float radius,
             float xCenter,
@@ -56,9 +56,13 @@ namespace WallClockPlugin.Model
             ModelDocument.SketchManager.InsertSketch(true);
             ModelDocument.ClearSelection2(true);
 
-            var radiusInMeters = toMeters(radius);
+            var radiusInMeters = ToMeters(radius);
+            xCenter = ToMeters(xCenter);
+            yCenter = ToMeters(yCenter);
+            zCenter = ToMeters(zCenter);
 
-            ModelDocument.SketchManager.CreateCircleByRadius(xCenter, yCenter, zCenter, radiusInMeters);
+            ModelDocument.SketchManager.CreateCircleByRadius(
+                xCenter, yCenter, zCenter, radiusInMeters);
 
             var currentFeature = (Feature)ModelDocument.SketchManager.ActiveSketch;
             currentFeature.Name = operationName;
@@ -67,21 +71,21 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Выдавливание детали
+        /// Выдавливание детали.
         /// </summary>
-        /// <param name="extrusionDepth">Глубина выдавливания в мм</param>
-        /// <param name="operationName">Название операции</param>
-        /// <param name="oneSide">Выдавливание в двух или одном направлении</param>
+        /// <param name="extrusionDepth">Глубина выдавливания в мм.</param>
+        /// <param name="operationName">Название операции.</param>
+        /// <param name="oneSide">Выдавливание в двух или одном направлении.</param>
         public void ExtrudePart(float extrusionDepth, string operationName, bool oneSide = true)
         {
-            //Доступ к элементу feature manager к активному эскизу
+            // Доступ к элементу feature manager к активному эскизу.
             Feature currentFeature = ModelDocument.SketchManager.ActiveSketch as Feature;
             var sketchName = currentFeature.Name;
 
             // Если выдавливание в две стороны, то тогда делим пополам
             extrusionDepth = oneSide ? extrusionDepth : extrusionDepth / 2;
 
-            var extrusionDepthInMeters = toMeters(extrusionDepth);
+            var extrusionDepthInMeters = ToMeters(extrusionDepth);
 
             ModelDocument.Extension.SelectByID2(
                 sketchName,
@@ -123,41 +127,63 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Вырезание детали
+        /// Вырезание детали.
         /// </summary>
-        /// <param name="cutoutDepth">Глубина выреза в мм</param>
-        /// <param name="operationName">Название операции</param>
-        /// <param name="oneSide">Вырезание в двух или одном направлении</param>
+        /// <param name="cutoutDepth">Глубина выреза в мм.</param>
+        /// <param name="operationName">Название операции.</param>
+        /// <param name="oneSide">Вырезание в двух или одном направлении.</param>
         public void CutPart(float cutoutDepth, string operationName, bool oneSide = true)
         {
-            //Доступ к элементу feature manager к активному эскизу
+            // Доступ к элементу feature manager к активному эскизу.
             Feature currentFeature = ModelDocument.SketchManager.ActiveSketch as Feature;
             var sketchName = currentFeature.Name;
 
-            var cutoutDepthInMeters = toMeters(cutoutDepth);
+            var cutoutDepthInMeters = ToMeters(cutoutDepth);
 
-            ModelDocument.Extension.SelectByID2(sketchName, "SKETCHSEGMENT",
-                0, 0, 0, false, 0, null, 0);
+            ModelDocument.Extension.SelectByID2(
+                sketchName, "SKETCHSEGMENT", 0, 0, 0, false, 0, null, 0);
 
             var feature = ModelDocument.FeatureManager.FeatureCut4(
-                true, false, true, 0, 0, cutoutDepthInMeters, 0,
-                false, false, false, false, 0, 0,
-                false, false, false, false, false,
-                true, true, true, true, false, 0, 0,
-                false, false);
+                true,
+                false,
+                true,
+                0,
+                0,
+                cutoutDepthInMeters,
+                0,
+                false,
+                false,
+                false,
+                false,
+                0,
+                0,
+                false,
+                false,
+                false,
+                false,
+                false,
+                true,
+                true,
+                true,
+                true,
+                false,
+                0,
+                0,
+                false,
+                false);
 
             feature.Name = operationName;
         }
 
         /// <summary>
-        /// Создание эскиза прямоугольника
+        /// Создание эскиза прямоугольника.
         /// </summary>
-        /// <param name="width">Ширина прямоугольника в мм</param>
-        /// <param name="height">Высота прямоугольника в мм</param>
-        /// <param name="operationName">Название операции</param>
-        /// <param name="xCenter">Координата x центра</param>
-        /// <param name="yCenter">Координата y центра</param>
-        /// <param name="zCenter">Координата z центра</param>
+        /// <param name="width">Ширина прямоугольника в мм.</param>
+        /// <param name="height">Высота прямоугольника в мм.</param>
+        /// <param name="operationName">Название операции.</param>
+        /// <param name="xCenter">Координата x центра.</param>
+        /// <param name="yCenter">Координата y центра.</param>
+        /// <param name="zCenter">Координата z центра.</param>
         public void CreateRectangleSketch(
             float width,
             float height,
@@ -174,12 +200,12 @@ namespace WallClockPlugin.Model
             width /= 2;
             height /= 2;
 
-            var widthInMeters = toMeters(width);
-            var heightInMeters = toMeters(height);
+            var widthInMeters = ToMeters(width);
+            var heightInMeters = ToMeters(height);
 
-            xCenter = toMeters(xCenter);
-            yCenter = toMeters(yCenter);
-            zCenter = toMeters(zCenter);
+            xCenter = ToMeters(xCenter);
+            yCenter = ToMeters(yCenter);
+            zCenter = ToMeters(zCenter);
 
             var x2 = xCenter + widthInMeters;
             var y2 = yCenter + heightInMeters;
@@ -199,9 +225,9 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Создание оси
+        /// Создание оси.
         /// </summary>
-        /// <param name="operationName">Название операции</param>
+        /// <param name="operationName">Название операции.</param>
         public void CreateAxisLine(string operationName)
         {
             ModelDocument.Extension.SelectByID2("Сверху", "PLANE", 0, 0, 0, false, 0, null, 0);
@@ -214,13 +240,13 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Создание кругового массива из операций
+        /// Создание кругового массива из операций.
         /// </summary>
-        /// <param name="count">Количество повторяющихся элементов</param>
-        /// <param name="angle">Угол между элементами</param>
-        /// <param name="operationName">Название операции</param>
-        /// <param name="repetitiveOperationName">Название повторяющейся операции</param>
-        /// <param name="axisName">Название оси</param>
+        /// <param name="count">Количество повторяющихся элементов.</param>
+        /// <param name="angle">Угол между элементами.</param>
+        /// <param name="operationName">Название операции.</param>
+        /// <param name="repetitiveOperationName">Название повторяющейся операции.</param>
+        /// <param name="axisName">Название оси.</param>
         public void CreateCircularArray(
             int count,
             float angle,
@@ -228,13 +254,16 @@ namespace WallClockPlugin.Model
             string repetitiveOperationName,
             string axisName)
         {
-            ModelDocument.Extension.SelectByID2(repetitiveOperationName, "BODYFEATURE", 0, 0, 0, false, 4, null, 0);
-            ModelDocument.Extension.SelectByID2("Line1@" + axisName, "EXTSKETCHSEGMENT", 0, -0.02f, 0, true, 1, null, 0);
+            ModelDocument.Extension.SelectByID2(
+                repetitiveOperationName, "BODYFEATURE", 0, 0, 0, false, 4, null, 0);
 
-            var angleInRadian = toRadians(angle);
+            ModelDocument.Extension.SelectByID2(
+                "Line1@" + axisName, "EXTSKETCHSEGMENT", 0, -0.02f, 0, true, 1, null, 0);
 
-            var feature = ModelDocument.FeatureManager.FeatureCircularPattern4(count, angleInRadian, true,
-               "NULL", true, false, false);
+            var angleInRadian = ToRadians(angle);
+
+            var feature = ModelDocument.FeatureManager.FeatureCircularPattern4(
+                count, angleInRadian, true, "NULL", true, false, false);
 
             feature.Name = operationName;
 
@@ -243,14 +272,14 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Создание эскиза Ромба 
+        /// Создание эскиза Ромба.
         /// </summary>
-        /// <param name="verticalDiagonalLength">Длина в мм</param>
-        /// <param name="horizontalDiagonalLength"></param>
-        /// <param name="xCenter">Координата x центра</param>
-        /// <param name="yCenter">Координата y центра</param>
-        /// <param name="zCenter">Координата z центра</param>
-        /// <param name="angle">Угол наклона ромба в градусах</param>
+        /// <param name="verticalDiagonalLength">Длина в мм.</param>
+        /// <param name="horizontalDiagonalLength">Длина горизонтальной диагонали.</param>
+        /// <param name="xCenter">Координата x центра.</param>
+        /// <param name="yCenter">Координата y центра.</param>
+        /// <param name="zCenter">Координата z центра.</param>
+        /// <param name="angle">Угол наклона ромба в градусах.</param>
         public void CreateRhombusSketch(
             float verticalDiagonalLength,
             float horizontalDiagonalLength,
@@ -263,30 +292,32 @@ namespace WallClockPlugin.Model
             ModelDocument.SketchManager.InsertSketch(true);
             ModelDocument.ClearSelection2(true);
 
-            verticalDiagonalLength = toMeters(verticalDiagonalLength);
-            horizontalDiagonalLength = toMeters(horizontalDiagonalLength);
+            verticalDiagonalLength = ToMeters(verticalDiagonalLength);
+            horizontalDiagonalLength = ToMeters(horizontalDiagonalLength);
 
-            var angleInRadian = toRadians(angle);
+            var angleInRadian = ToRadians(angle);
 
             var x3 = verticalDiagonalLength * Math.Sin(angleInRadian);
             var y3 = Math.Sqrt(Math.Pow(verticalDiagonalLength, 2) - Math.Pow(x3, 2));
 
-            var hypotenuse = Math.Sqrt(Math.Pow((verticalDiagonalLength / 2), 2) + Math.Pow((horizontalDiagonalLength / 2), 2));
+            var hypotenuse = Math.Sqrt(Math.Pow(verticalDiagonalLength / 2, 2)
+                + Math.Pow(horizontalDiagonalLength / 2, 2));
 
-            var innerAngleInRadian = Math.Asin((horizontalDiagonalLength / 2) / hypotenuse);
+            var innerAngleInRadian = Math.Asin(horizontalDiagonalLength / 2 / hypotenuse);
 
             var generalAngleInRadian = innerAngleInRadian + angleInRadian;
 
             var x2 = hypotenuse * Math.Sin(generalAngleInRadian);
             var y2 = Math.Sqrt(Math.Pow(hypotenuse, 2) - Math.Pow(x2, 2));
 
-            // Если уголнаходится в 3 четверти
+            // Если угол находится в 3 четверти.
             if (angle > 90 && angle <= 180)
             {
                 y2 = -y2;
                 y3 = -y3;
             }
-            // Если угол находится во 2 четверти
+
+            // Если угол находится во 2 четверти.
             else if (angle > 180 && angle <= 270)
             {
                 y2 = -y2;
@@ -306,7 +337,7 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Показать деталь в Триметрии
+        /// Показать деталь в Триметрии.
         /// </summary>
         public void ShowTrimetry()
         {
@@ -314,23 +345,23 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Перевод из миллиметров в метры
+        /// Перевод из миллиметров в метры.
         /// </summary>
-        /// <param name="valueInMM">Значение в миллиметрах</param>
-        /// <returns>Значение в метрах</returns>
-        private float toMeters(float valueInMM)
+        /// <param name="valueInMM">Значение в миллиметрах.</param>
+        /// <returns>Значение в метрах.</returns>
+        private float ToMeters(float valueInMM)
         {
             return valueInMM / 1000;
         }
 
         /// <summary>
-        /// Перевод из градусов в радианы
+        /// Перевод из градусов в радианы.
         /// </summary>
-        /// <param name="degrees">Значение в градусах</param>
-        /// <returns>Значение в радианах</returns>
-        private float toRadians(float degrees)
+        /// <param name="degrees">Значение в градусах.</param>
+        /// <returns>Значение в радианах.</returns>
+        private float ToRadians(float degrees)
         {
-            return (float)((degrees * Math.PI) / 180);
+            return (float)(degrees * Math.PI) / 180;
         }
     }
 }

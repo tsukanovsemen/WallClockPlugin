@@ -32,6 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.MainFormMenuStrip = new System.Windows.Forms.MenuStrip();
             this.ParametresGroupBox = new System.Windows.Forms.GroupBox();
+            this.UnitsMMLabel7 = new System.Windows.Forms.Label();
+            this.UnitsMMLabel6 = new System.Windows.Forms.Label();
+            this.CutsCountValueLabel = new System.Windows.Forms.Label();
+            this.CutRadiusValueLabel = new System.Windows.Forms.Label();
+            this.CutsCountLabel = new System.Windows.Forms.Label();
+            this.CutRadiusLabel = new System.Windows.Forms.Label();
+            this.CutsCountTextBox = new System.Windows.Forms.TextBox();
+            this.CutRadiusTextBox = new System.Windows.Forms.TextBox();
+            this.AddSideCutsCheckBox = new System.Windows.Forms.CheckBox();
             this.LengthHourHandValueLabel = new System.Windows.Forms.Label();
             this.LengthMinuteHandValueLabel = new System.Windows.Forms.Label();
             this.SideHeightValueLabel = new System.Windows.Forms.Label();
@@ -58,8 +67,8 @@
             this.BuildGroupBox = new System.Windows.Forms.GroupBox();
             this.ButtonsTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.BuildButton = new System.Windows.Forms.PictureBox();
-            this.GitHubButton = new System.Windows.Forms.PictureBox();
             this.SolidWorksButton = new System.Windows.Forms.PictureBox();
+            this.GitHubButton = new System.Windows.Forms.PictureBox();
             this.SolidWorksPictureBox = new System.Windows.Forms.PictureBox();
             this.AppNameLabel = new System.Windows.Forms.Label();
             this.AppImagePictureBox = new System.Windows.Forms.PictureBox();
@@ -68,8 +77,8 @@
             this.BuildGroupBox.SuspendLayout();
             this.ButtonsTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BuildButton)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GitHubButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SolidWorksButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GitHubButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SolidWorksPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppImagePictureBox)).BeginInit();
             this.SuspendLayout();
@@ -78,7 +87,7 @@
             // 
             this.MainFormMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainFormMenuStrip.Name = "MainFormMenuStrip";
-            this.MainFormMenuStrip.Size = new System.Drawing.Size(704, 24);
+            this.MainFormMenuStrip.Size = new System.Drawing.Size(720, 24);
             this.MainFormMenuStrip.TabIndex = 0;
             this.MainFormMenuStrip.Text = "menuStrip1";
             // 
@@ -87,6 +96,16 @@
             this.ParametresGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ParametresGroupBox.Controls.Add(this.UnitsMMLabel7);
+            this.ParametresGroupBox.Controls.Add(this.UnitsMMLabel6);
+            this.ParametresGroupBox.Controls.Add(this.CutsCountValueLabel);
+            this.ParametresGroupBox.Controls.Add(this.CutRadiusValueLabel);
+            this.ParametresGroupBox.Controls.Add(this.ClockStateOnlyHoursCheckBox);
+            this.ParametresGroupBox.Controls.Add(this.CutsCountLabel);
+            this.ParametresGroupBox.Controls.Add(this.CutRadiusLabel);
+            this.ParametresGroupBox.Controls.Add(this.CutsCountTextBox);
+            this.ParametresGroupBox.Controls.Add(this.CutRadiusTextBox);
+            this.ParametresGroupBox.Controls.Add(this.AddSideCutsCheckBox);
             this.ParametresGroupBox.Controls.Add(this.LengthHourHandValueLabel);
             this.ParametresGroupBox.Controls.Add(this.LengthMinuteHandValueLabel);
             this.ParametresGroupBox.Controls.Add(this.SideHeightValueLabel);
@@ -99,7 +118,6 @@
             this.ParametresGroupBox.Controls.Add(this.label9);
             this.ParametresGroupBox.Controls.Add(this.UnitsMMLabel1);
             this.ParametresGroupBox.Controls.Add(this.RadiusValueLabel);
-            this.ParametresGroupBox.Controls.Add(this.ClockStateOnlyHoursCheckBox);
             this.ParametresGroupBox.Controls.Add(this.SideHeightLabel);
             this.ParametresGroupBox.Controls.Add(this.SideWidthLabel);
             this.ParametresGroupBox.Controls.Add(this.LengthHourHandLabel);
@@ -113,16 +131,112 @@
             this.ParametresGroupBox.Font = new System.Drawing.Font("SolidWorks GDT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ParametresGroupBox.Location = new System.Drawing.Point(12, 27);
             this.ParametresGroupBox.Name = "ParametresGroupBox";
-            this.ParametresGroupBox.Size = new System.Drawing.Size(470, 402);
+            this.ParametresGroupBox.Size = new System.Drawing.Size(460, 441);
             this.ParametresGroupBox.TabIndex = 1;
             this.ParametresGroupBox.TabStop = false;
             this.ParametresGroupBox.Text = "Параметры и элементы управления";
+            // 
+            // UnitsMMLabel7
+            // 
+            this.UnitsMMLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UnitsMMLabel7.AutoSize = true;
+            this.UnitsMMLabel7.Location = new System.Drawing.Point(287, 289);
+            this.UnitsMMLabel7.Name = "UnitsMMLabel7";
+            this.UnitsMMLabel7.Size = new System.Drawing.Size(25, 15);
+            this.UnitsMMLabel7.TabIndex = 32;
+            this.UnitsMMLabel7.Text = "мм";
+            // 
+            // UnitsMMLabel6
+            // 
+            this.UnitsMMLabel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UnitsMMLabel6.AutoSize = true;
+            this.UnitsMMLabel6.Location = new System.Drawing.Point(287, 256);
+            this.UnitsMMLabel6.Name = "UnitsMMLabel6";
+            this.UnitsMMLabel6.Size = new System.Drawing.Size(25, 15);
+            this.UnitsMMLabel6.TabIndex = 31;
+            this.UnitsMMLabel6.Text = "мм";
+            // 
+            // CutsCountValueLabel
+            // 
+            this.CutsCountValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CutsCountValueLabel.AutoSize = true;
+            this.CutsCountValueLabel.Location = new System.Drawing.Point(370, 289);
+            this.CutsCountValueLabel.Name = "CutsCountValueLabel";
+            this.CutsCountValueLabel.Size = new System.Drawing.Size(12, 15);
+            this.CutsCountValueLabel.TabIndex = 30;
+            this.CutsCountValueLabel.Text = "-";
+            // 
+            // CutRadiusValueLabel
+            // 
+            this.CutRadiusValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CutRadiusValueLabel.AutoSize = true;
+            this.CutRadiusValueLabel.Location = new System.Drawing.Point(370, 256);
+            this.CutRadiusValueLabel.Name = "CutRadiusValueLabel";
+            this.CutRadiusValueLabel.Size = new System.Drawing.Size(12, 15);
+            this.CutRadiusValueLabel.TabIndex = 29;
+            this.CutRadiusValueLabel.Text = "-";
+            // 
+            // CutsCountLabel
+            // 
+            this.CutsCountLabel.AutoSize = true;
+            this.CutsCountLabel.Location = new System.Drawing.Point(6, 289);
+            this.CutsCountLabel.Name = "CutsCountLabel";
+            this.CutsCountLabel.Size = new System.Drawing.Size(144, 15);
+            this.CutsCountLabel.TabIndex = 28;
+            this.CutsCountLabel.Text = "Количество вырезов";
+            // 
+            // CutRadiusLabel
+            // 
+            this.CutRadiusLabel.AutoSize = true;
+            this.CutRadiusLabel.Location = new System.Drawing.Point(6, 256);
+            this.CutRadiusLabel.Name = "CutRadiusLabel";
+            this.CutRadiusLabel.Size = new System.Drawing.Size(107, 15);
+            this.CutRadiusLabel.TabIndex = 27;
+            this.CutRadiusLabel.Text = "Радиус выреза";
+            // 
+            // CutsCountTextBox
+            // 
+            this.CutsCountTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CutsCountTextBox.Enabled = false;
+            this.CutsCountTextBox.Location = new System.Drawing.Point(158, 286);
+            this.CutsCountTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.CutsCountTextBox.Name = "CutsCountTextBox";
+            this.CutsCountTextBox.Size = new System.Drawing.Size(110, 23);
+            this.CutsCountTextBox.TabIndex = 26;
+            this.CutsCountTextBox.TextChanged += new System.EventHandler(this.CutsCountTextBox_TextChanged);
+            this.CutsCountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CutsCountTextBox_KeyPress);
+            // 
+            // CutRadiusTextBox
+            // 
+            this.CutRadiusTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CutRadiusTextBox.Enabled = false;
+            this.CutRadiusTextBox.Location = new System.Drawing.Point(158, 253);
+            this.CutRadiusTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
+            this.CutRadiusTextBox.Name = "CutRadiusTextBox";
+            this.CutRadiusTextBox.Size = new System.Drawing.Size(110, 23);
+            this.CutRadiusTextBox.TabIndex = 25;
+            this.CutRadiusTextBox.TextChanged += new System.EventHandler(this.CutRadiusTextBox_TextChanged);
+            this.CutRadiusTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CutRadiusTextBox_KeyPress);
+            // 
+            // AddSideCutsCheckBox
+            // 
+            this.AddSideCutsCheckBox.AutoSize = true;
+            this.AddSideCutsCheckBox.Location = new System.Drawing.Point(9, 228);
+            this.AddSideCutsCheckBox.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.AddSideCutsCheckBox.Name = "AddSideCutsCheckBox";
+            this.AddSideCutsCheckBox.Size = new System.Drawing.Size(225, 19);
+            this.AddSideCutsCheckBox.TabIndex = 24;
+            this.AddSideCutsCheckBox.Text = "Добавить вырезы по бортику";
+            this.AddSideCutsCheckBox.UseVisualStyleBackColor = true;
+            this.AddSideCutsCheckBox.CheckedChanged += new System.EventHandler(this.AddSideCutsCheckBox_CheckedChanged);
             // 
             // LengthHourHandValueLabel
             // 
             this.LengthHourHandValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LengthHourHandValueLabel.AutoSize = true;
-            this.LengthHourHandValueLabel.Location = new System.Drawing.Point(380, 107);
+            this.LengthHourHandValueLabel.Location = new System.Drawing.Point(370, 107);
             this.LengthHourHandValueLabel.Name = "LengthHourHandValueLabel";
             this.LengthHourHandValueLabel.Size = new System.Drawing.Size(12, 15);
             this.LengthHourHandValueLabel.TabIndex = 23;
@@ -132,7 +246,7 @@
             // 
             this.LengthMinuteHandValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LengthMinuteHandValueLabel.AutoSize = true;
-            this.LengthMinuteHandValueLabel.Location = new System.Drawing.Point(380, 71);
+            this.LengthMinuteHandValueLabel.Location = new System.Drawing.Point(370, 71);
             this.LengthMinuteHandValueLabel.Name = "LengthMinuteHandValueLabel";
             this.LengthMinuteHandValueLabel.Size = new System.Drawing.Size(12, 15);
             this.LengthMinuteHandValueLabel.TabIndex = 22;
@@ -142,17 +256,17 @@
             // 
             this.SideHeightValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SideHeightValueLabel.AutoSize = true;
-            this.SideHeightValueLabel.Location = new System.Drawing.Point(380, 178);
+            this.SideHeightValueLabel.Location = new System.Drawing.Point(370, 178);
             this.SideHeightValueLabel.Name = "SideHeightValueLabel";
-            this.SideHeightValueLabel.Size = new System.Drawing.Size(52, 15);
+            this.SideHeightValueLabel.Size = new System.Drawing.Size(12, 15);
             this.SideHeightValueLabel.TabIndex = 21;
-            this.SideHeightValueLabel.Text = "20 - 40";
+            this.SideHeightValueLabel.Text = "-";
             // 
             // UnitsMMLabel5
             // 
             this.UnitsMMLabel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UnitsMMLabel5.AutoSize = true;
-            this.UnitsMMLabel5.Location = new System.Drawing.Point(297, 178);
+            this.UnitsMMLabel5.Location = new System.Drawing.Point(287, 178);
             this.UnitsMMLabel5.Name = "UnitsMMLabel5";
             this.UnitsMMLabel5.Size = new System.Drawing.Size(25, 15);
             this.UnitsMMLabel5.TabIndex = 20;
@@ -162,7 +276,7 @@
             // 
             this.UnitsMMLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UnitsMMLabel4.AutoSize = true;
-            this.UnitsMMLabel4.Location = new System.Drawing.Point(297, 143);
+            this.UnitsMMLabel4.Location = new System.Drawing.Point(287, 143);
             this.UnitsMMLabel4.Name = "UnitsMMLabel4";
             this.UnitsMMLabel4.Size = new System.Drawing.Size(25, 15);
             this.UnitsMMLabel4.TabIndex = 19;
@@ -172,17 +286,17 @@
             // 
             this.SideWidthValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SideWidthValueLabel.AutoSize = true;
-            this.SideWidthValueLabel.Location = new System.Drawing.Point(380, 143);
+            this.SideWidthValueLabel.Location = new System.Drawing.Point(370, 143);
             this.SideWidthValueLabel.Name = "SideWidthValueLabel";
-            this.SideWidthValueLabel.Size = new System.Drawing.Size(52, 15);
+            this.SideWidthValueLabel.Size = new System.Drawing.Size(12, 15);
             this.SideWidthValueLabel.TabIndex = 18;
-            this.SideWidthValueLabel.Text = "30 - 60";
+            this.SideWidthValueLabel.Text = "-";
             // 
             // UnitsMMLabel3
             // 
             this.UnitsMMLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UnitsMMLabel3.AutoSize = true;
-            this.UnitsMMLabel3.Location = new System.Drawing.Point(297, 107);
+            this.UnitsMMLabel3.Location = new System.Drawing.Point(287, 107);
             this.UnitsMMLabel3.Name = "UnitsMMLabel3";
             this.UnitsMMLabel3.Size = new System.Drawing.Size(25, 15);
             this.UnitsMMLabel3.TabIndex = 17;
@@ -192,7 +306,7 @@
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(380, 107);
+            this.label11.Location = new System.Drawing.Point(370, 107);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(0, 15);
             this.label11.TabIndex = 16;
@@ -201,7 +315,7 @@
             // 
             this.UnitsMMLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UnitsMMLabel2.AutoSize = true;
-            this.UnitsMMLabel2.Location = new System.Drawing.Point(297, 71);
+            this.UnitsMMLabel2.Location = new System.Drawing.Point(287, 71);
             this.UnitsMMLabel2.Name = "UnitsMMLabel2";
             this.UnitsMMLabel2.Size = new System.Drawing.Size(25, 15);
             this.UnitsMMLabel2.TabIndex = 15;
@@ -211,7 +325,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(380, 71);
+            this.label9.Location = new System.Drawing.Point(370, 71);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(0, 15);
             this.label9.TabIndex = 14;
@@ -220,7 +334,7 @@
             // 
             this.UnitsMMLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UnitsMMLabel1.AutoSize = true;
-            this.UnitsMMLabel1.Location = new System.Drawing.Point(297, 35);
+            this.UnitsMMLabel1.Location = new System.Drawing.Point(287, 35);
             this.UnitsMMLabel1.Name = "UnitsMMLabel1";
             this.UnitsMMLabel1.Size = new System.Drawing.Size(25, 15);
             this.UnitsMMLabel1.TabIndex = 13;
@@ -230,16 +344,16 @@
             // 
             this.RadiusValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.RadiusValueLabel.AutoSize = true;
-            this.RadiusValueLabel.Location = new System.Drawing.Point(380, 35);
+            this.RadiusValueLabel.Location = new System.Drawing.Point(370, 35);
             this.RadiusValueLabel.Name = "RadiusValueLabel";
-            this.RadiusValueLabel.Size = new System.Drawing.Size(68, 15);
+            this.RadiusValueLabel.Size = new System.Drawing.Size(12, 15);
             this.RadiusValueLabel.TabIndex = 11;
-            this.RadiusValueLabel.Text = "100 - 200";
+            this.RadiusValueLabel.Text = "-";
             // 
             // ClockStateOnlyHoursCheckBox
             // 
             this.ClockStateOnlyHoursCheckBox.AutoSize = true;
-            this.ClockStateOnlyHoursCheckBox.Location = new System.Drawing.Point(8, 222);
+            this.ClockStateOnlyHoursCheckBox.Location = new System.Drawing.Point(9, 376);
             this.ClockStateOnlyHoursCheckBox.Name = "ClockStateOnlyHoursCheckBox";
             this.ClockStateOnlyHoursCheckBox.Size = new System.Drawing.Size(195, 19);
             this.ClockStateOnlyHoursCheckBox.TabIndex = 10;
@@ -250,7 +364,7 @@
             // SideHeightLabel
             // 
             this.SideHeightLabel.AutoSize = true;
-            this.SideHeightLabel.Location = new System.Drawing.Point(6, 178);
+            this.SideHeightLabel.Location = new System.Drawing.Point(5, 178);
             this.SideHeightLabel.Name = "SideHeightLabel";
             this.SideHeightLabel.Size = new System.Drawing.Size(117, 30);
             this.SideHeightLabel.TabIndex = 9;
@@ -279,9 +393,9 @@
             this.LengthMinuteHandLabel.AutoSize = true;
             this.LengthMinuteHandLabel.Location = new System.Drawing.Point(6, 71);
             this.LengthMinuteHandLabel.Name = "LengthMinuteHandLabel";
-            this.LengthMinuteHandLabel.Size = new System.Drawing.Size(118, 45);
+            this.LengthMinuteHandLabel.Size = new System.Drawing.Size(118, 30);
             this.LengthMinuteHandLabel.TabIndex = 6;
-            this.LengthMinuteHandLabel.Text = "Длина минутной\r\nстрелки\r\n\r\n";
+            this.LengthMinuteHandLabel.Text = "Длина минутной\r\nстрелки";
             // 
             // RadiusLabel
             // 
@@ -299,9 +413,10 @@
             this.SideHeightTextBox.Location = new System.Drawing.Point(158, 175);
             this.SideHeightTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.SideHeightTextBox.Name = "SideHeightTextBox";
-            this.SideHeightTextBox.Size = new System.Drawing.Size(120, 23);
+            this.SideHeightTextBox.Size = new System.Drawing.Size(110, 23);
             this.SideHeightTextBox.TabIndex = 4;
             this.SideHeightTextBox.TextChanged += new System.EventHandler(this.SideHeightTextBox_TextChanged);
+            this.SideHeightTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SideHeightTextBox_KeyPress);
             // 
             // SideWidthTextBox
             // 
@@ -310,9 +425,10 @@
             this.SideWidthTextBox.Location = new System.Drawing.Point(158, 140);
             this.SideWidthTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.SideWidthTextBox.Name = "SideWidthTextBox";
-            this.SideWidthTextBox.Size = new System.Drawing.Size(120, 23);
+            this.SideWidthTextBox.Size = new System.Drawing.Size(110, 23);
             this.SideWidthTextBox.TabIndex = 3;
             this.SideWidthTextBox.TextChanged += new System.EventHandler(this.SideWidthTextBox_TextChanged);
+            this.SideWidthTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SideWidthTextBox_KeyPress);
             // 
             // HourHandLengthTextBox
             // 
@@ -321,9 +437,10 @@
             this.HourHandLengthTextBox.Location = new System.Drawing.Point(158, 104);
             this.HourHandLengthTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.HourHandLengthTextBox.Name = "HourHandLengthTextBox";
-            this.HourHandLengthTextBox.Size = new System.Drawing.Size(120, 23);
+            this.HourHandLengthTextBox.Size = new System.Drawing.Size(110, 23);
             this.HourHandLengthTextBox.TabIndex = 2;
             this.HourHandLengthTextBox.TextChanged += new System.EventHandler(this.HourHandLengthTextBox_TextChanged);
+            this.HourHandLengthTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HourHandLengthTextBox_KeyPress);
             // 
             // MinuteHandLengthTextBox
             // 
@@ -332,9 +449,10 @@
             this.MinuteHandLengthTextBox.Location = new System.Drawing.Point(158, 68);
             this.MinuteHandLengthTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.MinuteHandLengthTextBox.Name = "MinuteHandLengthTextBox";
-            this.MinuteHandLengthTextBox.Size = new System.Drawing.Size(120, 23);
+            this.MinuteHandLengthTextBox.Size = new System.Drawing.Size(110, 23);
             this.MinuteHandLengthTextBox.TabIndex = 1;
             this.MinuteHandLengthTextBox.TextChanged += new System.EventHandler(this.MinuteHandLengthTextBox_TextChanged);
+            this.MinuteHandLengthTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MinuteHandLengthTextBox_KeyPress);
             // 
             // RadiusTextBox
             // 
@@ -343,9 +461,10 @@
             this.RadiusTextBox.Location = new System.Drawing.Point(158, 32);
             this.RadiusTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 15);
             this.RadiusTextBox.Name = "RadiusTextBox";
-            this.RadiusTextBox.Size = new System.Drawing.Size(120, 23);
+            this.RadiusTextBox.Size = new System.Drawing.Size(110, 23);
             this.RadiusTextBox.TabIndex = 0;
             this.RadiusTextBox.TextChanged += new System.EventHandler(this.RadiusTextBox_TextChanged);
+            this.RadiusTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RadiusTextBox_KeyPress);
             // 
             // BuildGroupBox
             // 
@@ -356,9 +475,9 @@
             this.BuildGroupBox.Controls.Add(this.AppNameLabel);
             this.BuildGroupBox.Controls.Add(this.AppImagePictureBox);
             this.BuildGroupBox.Font = new System.Drawing.Font("SolidWorks GDT", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BuildGroupBox.Location = new System.Drawing.Point(494, 27);
+            this.BuildGroupBox.Location = new System.Drawing.Point(478, 27);
             this.BuildGroupBox.Name = "BuildGroupBox";
-            this.BuildGroupBox.Size = new System.Drawing.Size(198, 401);
+            this.BuildGroupBox.Size = new System.Drawing.Size(230, 440);
             this.BuildGroupBox.TabIndex = 2;
             this.BuildGroupBox.TabStop = false;
             this.BuildGroupBox.Text = "Запуск";
@@ -371,9 +490,9 @@
             this.ButtonsTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.ButtonsTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.ButtonsTableLayout.Controls.Add(this.BuildButton, 0, 0);
-            this.ButtonsTableLayout.Controls.Add(this.GitHubButton, 1, 0);
             this.ButtonsTableLayout.Controls.Add(this.SolidWorksButton, 2, 0);
-            this.ButtonsTableLayout.Location = new System.Drawing.Point(11, 337);
+            this.ButtonsTableLayout.Controls.Add(this.GitHubButton, 1, 0);
+            this.ButtonsTableLayout.Location = new System.Drawing.Point(28, 376);
             this.ButtonsTableLayout.Name = "ButtonsTableLayout";
             this.ButtonsTableLayout.RowCount = 1;
             this.ButtonsTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -393,18 +512,6 @@
             this.BuildButton.MouseEnter += new System.EventHandler(this.BuildButton_MouseEnter);
             this.BuildButton.MouseLeave += new System.EventHandler(this.BuildButton_MouseLeave);
             // 
-            // GitHubButton
-            // 
-            this.GitHubButton.Image = global::WallClockPlugin.View.Properties.Resources.GitHubButton_52x52;
-            this.GitHubButton.Location = new System.Drawing.Point(61, 3);
-            this.GitHubButton.Name = "GitHubButton";
-            this.GitHubButton.Size = new System.Drawing.Size(52, 50);
-            this.GitHubButton.TabIndex = 1;
-            this.GitHubButton.TabStop = false;
-            this.GitHubButton.Click += new System.EventHandler(this.GitHubButton_Click);
-            this.GitHubButton.MouseEnter += new System.EventHandler(this.GitHubButton_MouseEnter);
-            this.GitHubButton.MouseLeave += new System.EventHandler(this.GitHubButton_MouseLeave);
-            // 
             // SolidWorksButton
             // 
             this.SolidWorksButton.Image = global::WallClockPlugin.View.Properties.Resources.SolidWorksButton_52x52;
@@ -417,10 +524,22 @@
             this.SolidWorksButton.MouseEnter += new System.EventHandler(this.SolidWorksButton_MouseEnter);
             this.SolidWorksButton.MouseLeave += new System.EventHandler(this.SolidWorksButton_MouseLeave);
             // 
+            // GitHubButton
+            // 
+            this.GitHubButton.Image = global::WallClockPlugin.View.Properties.Resources.GitHubButton_52x52;
+            this.GitHubButton.Location = new System.Drawing.Point(61, 3);
+            this.GitHubButton.Name = "GitHubButton";
+            this.GitHubButton.Size = new System.Drawing.Size(52, 50);
+            this.GitHubButton.TabIndex = 1;
+            this.GitHubButton.TabStop = false;
+            this.GitHubButton.Click += new System.EventHandler(this.GitHubButton_Click);
+            this.GitHubButton.MouseEnter += new System.EventHandler(this.GitHubButton_MouseEnter);
+            this.GitHubButton.MouseLeave += new System.EventHandler(this.GitHubButton_MouseLeave);
+            // 
             // SolidWorksPictureBox
             // 
             this.SolidWorksPictureBox.Image = global::WallClockPlugin.View.Properties.Resources.SolidWorksTextLogo;
-            this.SolidWorksPictureBox.Location = new System.Drawing.Point(11, 242);
+            this.SolidWorksPictureBox.Location = new System.Drawing.Point(28, 242);
             this.SolidWorksPictureBox.Margin = new System.Windows.Forms.Padding(3, 3, 8, 3);
             this.SolidWorksPictureBox.Name = "SolidWorksPictureBox";
             this.SolidWorksPictureBox.Size = new System.Drawing.Size(176, 50);
@@ -432,7 +551,7 @@
             // 
             this.AppNameLabel.AutoSize = true;
             this.AppNameLabel.Font = new System.Drawing.Font("SolidWorks GDT", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AppNameLabel.Location = new System.Drawing.Point(24, 201);
+            this.AppNameLabel.Location = new System.Drawing.Point(37, 201);
             this.AppNameLabel.Name = "AppNameLabel";
             this.AppNameLabel.Size = new System.Drawing.Size(160, 38);
             this.AppNameLabel.TabIndex = 1;
@@ -441,7 +560,7 @@
             // AppImagePictureBox
             // 
             this.AppImagePictureBox.Image = global::WallClockPlugin.View.Properties.Resources.WallClockSw1;
-            this.AppImagePictureBox.Location = new System.Drawing.Point(11, 19);
+            this.AppImagePictureBox.Location = new System.Drawing.Point(28, 22);
             this.AppImagePictureBox.Margin = new System.Windows.Forms.Padding(8, 3, 8, 3);
             this.AppImagePictureBox.Name = "AppImagePictureBox";
             this.AppImagePictureBox.Size = new System.Drawing.Size(176, 176);
@@ -454,14 +573,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(704, 441);
+            this.ClientSize = new System.Drawing.Size(720, 480);
             this.Controls.Add(this.BuildGroupBox);
             this.Controls.Add(this.ParametresGroupBox);
             this.Controls.Add(this.MainFormMenuStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MainFormMenuStrip;
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(720, 480);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wall Clock Plugin";
             this.ParametresGroupBox.ResumeLayout(false);
             this.ParametresGroupBox.PerformLayout();
@@ -469,8 +591,8 @@
             this.BuildGroupBox.PerformLayout();
             this.ButtonsTableLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BuildButton)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GitHubButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SolidWorksButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GitHubButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SolidWorksPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppImagePictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -514,6 +636,15 @@
         private System.Windows.Forms.Label LengthMinuteHandValueLabel;
         private System.Windows.Forms.PictureBox SolidWorksButton;
         private System.Windows.Forms.ToolTip ToolTip;
+        private System.Windows.Forms.Label CutsCountLabel;
+        private System.Windows.Forms.Label CutRadiusLabel;
+        private System.Windows.Forms.TextBox CutsCountTextBox;
+        private System.Windows.Forms.TextBox CutRadiusTextBox;
+        private System.Windows.Forms.CheckBox AddSideCutsCheckBox;
+        private System.Windows.Forms.Label CutsCountValueLabel;
+        private System.Windows.Forms.Label CutRadiusValueLabel;
+        private System.Windows.Forms.Label UnitsMMLabel7;
+        private System.Windows.Forms.Label UnitsMMLabel6;
     }
 }
 

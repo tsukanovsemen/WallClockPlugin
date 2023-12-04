@@ -1,81 +1,98 @@
-﻿using System;
-
-namespace WallClockPlugin.Model
+﻿namespace WallClockPlugin.Model
 {
+    using System;
+
     /// <summary>
-    /// Класс для хранения и валидации параметров
+    /// Класс для хранения и проверки параметров.
     /// </summary>
     public class WallClockParameters
     {
         /// <summary>
-        /// Ширина рисок часов
+        /// Ширина рисок часов.
         /// </summary>
         private const float CLOCKS_MARK_WIDTH = 15.0f;
 
         /// <summary>
-        /// Минимальное значение радиуса циферблата
+        /// Минимальное значение радиуса циферблата.
         /// </summary>
         private const int MIN_RADIUS = 100;
 
         /// <summary>
-        /// Максимальное значение радиуса циферблата
+        /// Максимальное значение радиуса циферблата.
         /// </summary>
         private const int MAX_RADIUS = 200;
 
         /// <summary>
-        /// Минимальное значение ширины бортика
+        /// Минимальное значение ширины бортика.
         /// </summary>
         private const int MIN_SIDE_WIDTH = 30;
 
         /// <summary>
-        /// Максимальное значение ширины бортика
+        /// Максимальное значение ширины бортика.
         /// </summary>
         private const int MAX_SIDE_WIDTH = 60;
 
         /// <summary>
-        /// Минимальное значение высоты бортика
+        /// Минимальное значение высоты бортика.
         /// </summary>
         private const int MIN_SIDE_HEIGHT = 20;
 
         /// <summary>
-        /// Максимальное значение высоты бортика
+        /// Максимальное значение высоты бортика.
         /// </summary>
         private const int MAX_SIDE_HEIGHT = 40;
 
         /// <summary>
-        /// Радиус циферблата
+        /// Минимальный размер радиуса выреза (узора).
+        /// </summary>
+        private const int MIN_CUT_RADIUS = 25;
+
+        /// <summary>
+        /// Минимальное количество вырезов.
+        /// </summary>
+        private const int MIN_CUTS_COUNT = 1;
+
+        /// <summary>
+        /// Радиус циферблата.
         /// </summary>
         private float _radius = MIN_RADIUS;
 
         /// <summary>
-        /// Ширина бортика
+        /// Ширина бортика.
         /// </summary>
         private float _sideWidth = MIN_SIDE_WIDTH;
 
         /// <summary>
-        /// Высота борткиа 
+        /// Высота бортика.
         /// </summary>
         private float _sideHeight = MIN_SIDE_HEIGHT;
 
         /// <summary>
-        /// Длина минутной стрелки
+        /// Длина минутной стрелки.
         /// </summary>
         private float _minuteHandLength;
 
         /// <summary>
-        /// Длина часовой стрелки
+        /// Длина часовой стрелки.
         /// </summary>
         private float _hourHandLength;
 
         /// <summary>
-        /// Радиус циферблата
+        /// Радиус выреза.
+        /// </summary>
+        private float _cutRadius = MIN_CUT_RADIUS;
+
+        /// <summary>
+        /// Количество вырезов.
+        /// </summary>
+        private int _cutsCount;
+
+        /// <summary>
+        /// Радиус циферблата.
         /// </summary>
         public float Radius
         {
-            get
-            {
-                return _radius;
-            }
+            get => _radius;
             set
             {
                 if (!Validator.ValidateRange(MIN_RADIUS, MAX_RADIUS, value))
@@ -89,14 +106,11 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Ширина бортика
+        /// Ширина бортика.
         /// </summary>
         public float SideWidth
         {
-            get
-            {
-                return _sideWidth;
-            }
+            get => _sideWidth;
             set
             {
                 if (!Validator.ValidateRange(MIN_SIDE_WIDTH, MAX_SIDE_WIDTH, value))
@@ -110,14 +124,11 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Высота бортика
+        /// Высота бортика.
         /// </summary>
         public float SideHeight
         {
-            get
-            {
-                return _sideHeight;
-            }
+            get => _sideHeight;
             set
             {
                 if (!Validator.ValidateRange(MIN_SIDE_HEIGHT, MAX_SIDE_HEIGHT, value))
@@ -131,14 +142,11 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Длина минутной стрелки
+        /// Длина минутной стрелки.
         /// </summary>
         public float MinuteHandLength
         {
-            get
-            {
-                return _minuteHandLength;
-            }
+            get => _minuteHandLength;
             set
             {
                 var minValue = MinMinuteHandLength();
@@ -155,14 +163,11 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Длина часовой стрелки
+        /// Длина часовой стрелки.
         /// </summary>
         public float HourHandLength
         {
-            get
-            {
-                return _hourHandLength;
-            }
+            get => _hourHandLength;
             set
             {
                 var minValue = MinHourHandLength();
@@ -179,107 +184,217 @@ namespace WallClockPlugin.Model
         }
 
         /// <summary>
-        /// Состояние - отображать только часы
+        /// Состояние - отображать только часы.
         /// </summary>
         public bool OnlyHours { get; set; } = false;
 
         /// <summary>
-        /// Возвращает минимальный радиус циферблата
+        /// Радиус выреза.
         /// </summary>
-        /// <returns>Минимальный радиус циферблата</returns>
+        public float CutRadius
+        {
+            get => _cutRadius;
+            set
+            {
+                var minValue = MIN_CUT_RADIUS;
+                var maxValue = SideWidth - 5;
+
+                if (!Validator.ValidateRange(MIN_CUT_RADIUS, Radius, value))
+                {
+                    throw new ArgumentException($"Input value is out of range - " +
+                        $"[{minValue};{maxValue}].");
+                }
+
+                _cutRadius = value;
+            }
+        }
+
+        /// <summary>
+        /// Количество вырезов.
+        /// </summary>
+        public int CutsCount
+        {
+            get => _cutsCount;
+            set
+            {
+                var minValue = MIN_CUTS_COUNT;
+                var maxValue = MaxCutsCount();
+
+                if (!Validator.ValidateRange(minValue, maxValue, value))
+                {
+                    throw new ArgumentException($"Input value is out of range - " +
+                        $"[{minValue};{maxValue}].");
+                }
+
+                _cutsCount = value;
+            }
+        }
+
+        /// <summary>
+        /// Состояние - отображать вырезы бортика.
+        /// </summary>
+        public bool SideCuts { get; set; } = false;
+
+        /// <summary>
+        /// Возвращает минимальный радиус циферблата.
+        /// </summary>
+        /// <returns>Минимальный радиус циферблата.</returns>
         public int MinRadius()
         {
             return MIN_RADIUS;
         }
 
         /// <summary>
-        /// Возвращает минимальную ширину бортика
+        /// Возвращает максимальный радиус циферблата.
         /// </summary>
-        /// <returns>Минимальная ширина бортика</returns>
+        /// <returns>Максимальный радиус циферблата.</returns>
+        public int MaxRadius()
+        {
+            return MAX_RADIUS;
+        }
+
+        /// <summary>
+        /// Возвращает минимальную ширину бортика.
+        /// </summary>
+        /// <returns>Минимальная ширина бортика.</returns>
         public int MinSideWidth()
         {
             return MIN_SIDE_WIDTH;
         }
 
         /// <summary>
-        /// Возвращает минимальную высотку бортика
+        /// Возвращает максимальную ширину бортика.
         /// </summary>
-        /// <returns>Минимальная высота бортика</returns>
+        /// <returns>Максимальная ширина бортика.</returns>
+        public int MaxSideWidth()
+        {
+            return MAX_SIDE_WIDTH;
+        }
+
+        /// <summary>
+        /// Возвращает минимальную высотку бортика.
+        /// </summary>
+        /// <returns>Минимальная высота бортика.</returns>
         public int MinSideHeight()
         {
             return MIN_SIDE_HEIGHT;
         }
 
         /// <summary>
-        /// Ширина рисок часов
+        /// Возвращает максимальную высоту бортика.
         /// </summary>
-        /// <returns>Возвращает ширину рисок часов</returns>
+        /// <returns>Максимальная высота бортика.</returns>
+        public int MaxSideHeight()
+        {
+            return MAX_SIDE_HEIGHT;
+        }
+
+        /// <summary>
+        /// Ширина рисок часов.
+        /// </summary>
+        /// <returns>Возвращает ширину рисок часов.</returns>
         public float ClocksMarkWidth()
         {
             return CLOCKS_MARK_WIDTH;
         }
 
         /// <summary>
-        /// Длина риски часов, обозначающих часы
+        /// Длина риски часов, обозначающих часы.
         /// </summary>
-        /// <returns>Возвращает длину риски часов, обозначающих часы</returns>
+        /// <returns>Возвращает длину риски часов, обозначающих часы.</returns>
         public float ClocksHoursMarkLength()
         {
             return Radius * 0.2f;
         }
 
         /// <summary>
-        /// Длина риски часов, обозначающих минуты
+        /// Длина риски часов, обозначающих минуты.
         /// </summary>
-        /// <returns>Возвращает длину риски часов, обозначающих минуты</returns>
+        /// <returns>Возвращает длину риски часов, обозначающих минуты.</returns>
         public float ClocksMinutesMarkLength()
         {
             return Radius * 0.1f;
         }
 
         /// <summary>
-        /// Высота риски часов
+        /// Высота риски часов.
         /// </summary>
-        /// <returns>Возвращает высоту риски часов</returns>
+        /// <returns>Возвращает высоту риски часов.</returns>
         public float ClocksMarkHeight()
         {
             return SideHeight / 6.0f;
         }
 
         /// <summary>
-        /// Метод возвращает минимальное значение длины минутной стрелки
+        /// Метод возвращает минимальное значение длины минутной стрелки.
         /// </summary>
-        /// <returns>Минимальное значение длины минутной стрелки</returns>
+        /// <returns>Минимальное значение длины минутной стрелки.</returns>
         public float MinMinuteHandLength()
         {
             return (_radius / 2) + 4;
         }
 
         /// <summary>
-        /// Метод возвращает минимальное значение длины часовой стрелки
+        /// Метод возвращает минимальное значение длины часовой стрелки.
         /// </summary>
-        /// <returns>Минимальное значение длины часовой стрелки</returns>
+        /// <returns>Минимальное значение длины часовой стрелки.</returns>
         public float MinHourHandLength()
         {
             return _radius / 5;
         }
 
         /// <summary>
-        /// Метод возвращает максимальное значение длины минутной стрелки
+        /// Метод возвращает максимальное значение длины минутной стрелки.
         /// </summary>
-        /// <returns>Максимальное значение длины минутной стрелки</returns>
+        /// <returns>Максимальное значение длины минутной стрелки.</returns>
         public float MaxMinuteHandLength()
         {
             return _radius * 0.6f;
         }
 
         /// <summary>
-        /// Метод возвращает максимальное значение длины часовой стрелки
+        /// Метод возвращает максимальное значение длины часовой стрелки.
         /// </summary>
-        /// <returns>Максимальное значение длины часовой стрелки</returns>
+        /// <returns>Максимальное значение длины часовой стрелки.</returns>
         public float MaxHourHandLength()
         {
             return _radius * 0.3f;
+        }
+
+        /// <summary>
+        /// Возвращает максимальное количество вырезов.
+        /// </summary>
+        /// <returns>Максимальное количество вырезов.</returns>
+        public int MaxCutsCount()
+        {
+            return (int)(Math.PI / Math.Asin(CutRadius / (Radius + SideWidth)));
+        }
+
+        /// <summary>
+        /// Возвращает минимальное количество вырезов.
+        /// </summary>
+        /// <returns>Минимальное количество вырезов.</returns>
+        public int MinCutsCount()
+        {
+            return MIN_CUTS_COUNT;
+        }
+
+        /// <summary>
+        /// Возвращает максимальный радиус выреза.
+        /// </summary>
+        /// <returns>Максимальный радиус выреза.</returns>
+        public float MaxCutRadius()
+        {
+            return SideWidth - 5;
+        }
+
+        /// <summary>
+        /// Возвращает минимальный радиус выреза.
+        /// </summary>
+        /// <returns>Минимальный радиус выреза.</returns>
+        public float MinCutRadius()
+        {
+            return MIN_CUT_RADIUS;
         }
     }
 }
