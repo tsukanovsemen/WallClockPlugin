@@ -1,6 +1,7 @@
 ﻿namespace WallClockPlugin.Model
 {
     using System;
+    using System.Diagnostics;
 
     /// <summary>
     /// Класс для хранения и проверки параметров.
@@ -50,7 +51,7 @@
         /// <summary>
         /// Минимальное количество вырезов.
         /// </summary>
-        private const int MIN_CUTS_COUNT = 1;
+        private const int MIN_CUTS_COUNT = 2;
 
         /// <summary>
         /// Радиус циферблата.
@@ -85,7 +86,7 @@
         /// <summary>
         /// Количество вырезов.
         /// </summary>
-        private int _cutsCount;
+        private int _cutsCount = MIN_CUTS_COUNT;
 
         /// <summary>
         /// Создает объект класса.
@@ -340,7 +341,7 @@
         /// <returns>Минимальное значение длины минутной стрелки.</returns>
         public float MinMinuteHandLength()
         {
-            return (_radius / 2) + 4;
+            return (Radius / 2) + 4;
         }
 
         /// <summary>
@@ -349,7 +350,7 @@
         /// <returns>Минимальное значение длины часовой стрелки.</returns>
         public float MinHourHandLength()
         {
-            return _radius / 5;
+            return Radius / 5;
         }
 
         /// <summary>
@@ -404,6 +405,21 @@
         public float MinCutRadius()
         {
             return MIN_CUT_RADIUS;
+        }
+
+        /// <summary>
+        /// Устанавливает значения по умолчанию.
+        /// </summary>
+        public void SetDefaultParameters()
+        {
+            Radius = MIN_RADIUS;
+            SideWidth = MIN_SIDE_WIDTH;
+            SideHeight = MIN_SIDE_HEIGHT;
+            MinuteHandLength = MinMinuteHandLength();
+            HourHandLength = MinHourHandLength();
+            SideCuts = false;
+            CutRadius = MIN_CUT_RADIUS;
+            CutsCount = MIN_CUTS_COUNT;
         }
     }
 }
