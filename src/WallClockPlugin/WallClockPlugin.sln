@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A53C174C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WallClockPlugin.Model.UnitTests", "WallClockPlugin.Model.UnitTests\WallClockPlugin.Model.UnitTests.csproj", "{89A20E25-F052-4A9F-A262-9A95ED6A8A7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StressTesting", "StressTesting\StressTesting\StressTesting.csproj", "{16BBD63A-B84C-4431-944F-B29DCABF5C85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{89A20E25-F052-4A9F-A262-9A95ED6A8A7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89A20E25-F052-4A9F-A262-9A95ED6A8A7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89A20E25-F052-4A9F-A262-9A95ED6A8A7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16BBD63A-B84C-4431-944F-B29DCABF5C85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16BBD63A-B84C-4431-944F-B29DCABF5C85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16BBD63A-B84C-4431-944F-B29DCABF5C85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16BBD63A-B84C-4431-944F-B29DCABF5C85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

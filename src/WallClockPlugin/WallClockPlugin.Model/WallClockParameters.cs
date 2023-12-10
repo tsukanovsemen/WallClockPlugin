@@ -1,7 +1,6 @@
 ﻿namespace WallClockPlugin.Model
 {
     using System;
-    using System.Diagnostics;
 
     /// <summary>
     /// Класс для хранения и проверки параметров.
