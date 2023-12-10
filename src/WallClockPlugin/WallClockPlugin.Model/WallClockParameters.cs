@@ -208,7 +208,7 @@
                 var minValue = MIN_CUT_RADIUS;
                 var maxValue = SideWidth - 5;
 
-                if (!Validator.ValidateRange(MIN_CUT_RADIUS, Radius, value))
+                if (!Validator.ValidateRange(minValue, maxValue, value))
                 {
                     throw new ArgumentException($"Input value is out of range - " +
                         $"[{minValue};{maxValue}].");
@@ -358,7 +358,7 @@
         /// <returns>Максимальное значение длины минутной стрелки.</returns>
         public float MaxMinuteHandLength()
         {
-            return _radius * 0.6f;
+            return _radius * 0.55f;
         }
 
         /// <summary>

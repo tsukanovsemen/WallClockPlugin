@@ -221,8 +221,11 @@
             var agnleInOneMinute = 360 / 60;
             var angleInOneHour = 360 / 12;
 
-            var angleMinute = DateTime.Now.Minute * agnleInOneMinute;
-            var angleHour = DateTime.Now.Hour * angleInOneHour;
+            var minutes = 0;
+            var hours = 3;
+
+            var angleMinute = minutes * agnleInOneMinute;
+            var angleHour = hours * angleInOneHour;
 
             BuildHourHand(hourHandLength, widthHand, angleHour);
             BuildMinuteHand(minuteHandLength, widthHand, angleMinute);
