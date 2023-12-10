@@ -1,14 +1,14 @@
-﻿namespace StressTesting
+﻿namespace WallClockPlugin.StressTesting
 {
     /// <summary>
-    /// Точка входа в приложение.
+    /// Класс точки входа.
     /// </summary>
-    class Program
+    public class Program
     {
         /// <summary>
         /// Точка входа в приложение.
         /// </summary>
-        /// <param name="args">Входные данные.</param>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             StressTestingWallClockBuilding stressTesting = new StressTestingWallClockBuilding();
