@@ -116,7 +116,7 @@
             WallClockParameters parameters = new WallClockParameters();
             var radius = 150;
             parameters.Radius = radius;
-            var inputValue = 87;
+            var inputValue = 80;
             var expectedValue = inputValue;
 
             // Act
@@ -345,7 +345,7 @@
             WallClockParameters parameters = new WallClockParameters();
             var radius = 150;
             parameters.Radius = radius;
-            var expectedValue = radius * 0.6;
+            var expectedValue = radius * 0.55f;
 
             // Act
             var actualValue = parameters.MaxMinuteHandLength();
@@ -540,7 +540,7 @@
         {
             // Setup
             WallClockParameters parameters = new WallClockParameters();
-            var expectedValue = 1;
+            var expectedValue = 2;
 
             // Act
             var actualValue = parameters.MinCutsCount();
